@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aether Aerial — Perspective Elevated</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syncopate:wght@400;700&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="Aether_White.svg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -75,10 +76,15 @@
     }
 
     .nav-logo {
-      display: flex;
-      align-items: center;
+      font-family: 'Syncopate', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      text-transform: uppercase;
       text-decoration: none;
     }
+    .nav-logo span { color: var(--gold); }
 
     .nav-links {
       display: flex;
@@ -922,7 +928,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><img src="Aether_White.svg" alt="Aether Aerial" style="height: 48px; width: auto;" /></a>
+  <a href="#" class="nav-logo">Aether <span>Aerial</span></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>

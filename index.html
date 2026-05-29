@@ -815,17 +815,107 @@
       font-family: 'Cormorant Garamond', serif;
     }
 
-    .contact-email {
-      font-family: 'Raleway', sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid var(--gold-dim);
-      padding-bottom: 4px;
-      transition: color 0.3s;
+    .contact-form {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: left;
     }
-    .contact-email:hover { color: var(--white); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: var(--nebula);
+      border: 1px solid rgba(139,164,200,0.15);
+      color: var(--starlight);
+      padding: 14px 18px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.3s;
+      cursor: none;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(139,164,200,0.35);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ab5d4' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 44px;
+    }
+
+    .form-select option {
+      background: var(--deep);
+      color: var(--starlight);
+    }
+
+    .form-select option:disabled {
+      color: rgba(139,164,200,0.35);
+    }
+
+    .form-textarea {
+      resize: vertical;
+    }
+
+    .form-submit {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--void);
+      padding: 16px 36px;
+      border: none;
+      cursor: none;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+      display: block;
+    }
+
+    .form-submit:hover { background: #e0ba7e; transform: translateY(-2px); }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+    }
 
     /* FOOTER */
     footer {
@@ -1301,12 +1391,60 @@
 <section class="contact-section" id="contact">
   <h2 class="contact-title reveal">Let's build<br/>something <em>aerial</em></h2>
   <p class="contact-sub reveal reveal-delay-1">Ready for imagery that changes how your audience sees the world?</p>
-  <div class="reveal reveal-delay-2">
-    <a href="mailto:contact@aetheraerial.com" class="contact-email">contact@aetheraerial.com</a>
-  </div>
-  <div style="margin-top: 52px;" class="reveal reveal-delay-3">
-    <a href="mailto:contact@aetheraerial.com" class="btn-primary">Start a Project</a>
-  </div>
+  <form class="contact-form reveal reveal-delay-2" method="POST" action="https://formspree.io/f/xbdbbybd">
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label class="form-label" for="cf-name">Name *</label>
+        <input class="form-input" type="text" id="cf-name" name="name" required placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="cf-company">Company</label>
+        <input class="form-input" type="text" id="cf-company" name="company" placeholder="Company name" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="cf-email">Email *</label>
+        <input class="form-input" type="email" id="cf-email" name="email" required placeholder="your@email.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="cf-phone">Phone</label>
+        <input class="form-input" type="tel" id="cf-phone" name="phone" placeholder="+1 (000) 000-0000" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="cf-location">Project Location</label>
+        <input class="form-input" type="text" id="cf-location" name="location" placeholder="City, State" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="cf-timeline">Timeline</label>
+        <input class="form-input" type="text" id="cf-timeline" name="timeline" placeholder="e.g. Q3 2026, ASAP, Flexible" />
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label" for="cf-service">Type of Service *</label>
+        <select class="form-select" id="cf-service" name="service" required>
+          <option value="" disabled selected>Select a Service</option>
+          <option value="Construction Progress Documentation">Construction Progress Documentation</option>
+          <option value="Architectural Marketing Media">Architectural Marketing Media</option>
+          <option value="Orthomosaic &amp; Site Mapping">Orthomosaic &amp; Site Mapping</option>
+          <option value="Inspection &amp; Survey Capture">Inspection &amp; Survey Capture</option>
+          <option value="Private Estate &amp; Events">Private Estate &amp; Events</option>
+          <option value="Specialty / Custom Project">Specialty / Custom Project</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label" for="cf-message">Message *</label>
+        <textarea class="form-textarea" id="cf-message" name="message" required rows="5" placeholder="Tell us about your project..."></textarea>
+      </div>
+
+      <div class="form-group full">
+        <button type="submit" class="form-submit">Submit Inquiry</button>
+      </div>
+
+    </div>
+  </form>
 </section>
 
 <!-- FOOTER -->

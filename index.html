@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aether Aerial — Perspective.Elevated.</title>
+  <title>AETHER AERIAL — Perspective.Elevated.</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@200;300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="Aether_White.svg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --void: #0a0a0c;
-      --deep: #0f0f11;
-      --nebula: #141416;
-      --ether: #1c1c1f;
-      --mist: #7a8896;
-      --starlight: #d4d9de;
-      --white: #edf0f3;
-      --gold: #c8cdd4;
-      --gold-dim: #6e757e;
-      --accent: #8a9baa;
-      --glow: rgba(200, 205, 212, 0.07);
+      --void: #020308;
+      --deep: #060a14;
+      --nebula: #0b1022;
+      --ether: #111930;
+      --mist: #9ab5d4;
+      --starlight: #ddeaf8;
+      --white: #f2f7ff;
+      --gold: #c9a96e;
+      --gold-dim: #8a6f45;
+      --accent: #4a7fc1;
+      --glow: rgba(74, 127, 193, 0.15);
     }
 
     html { scroll-behavior: smooth; }
@@ -48,7 +48,7 @@
     .cursor-ring {
       position: fixed;
       width: 36px; height: 36px;
-      border: 1px solid rgba(200,205,212,0.35);
+      border: 1px solid rgba(201,169,110,0.4);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
@@ -73,7 +73,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 28px 60px;
-      background: linear-gradient(to bottom, rgba(10,10,12,0.96) 0%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(2,3,8,0.97) 0%, transparent 100%);
     }
 
     .nav-logo {
@@ -137,9 +137,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(170,185,200,0.07) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 55% at 50% 20%, rgba(140,158,175,0.04) 0%, transparent 70%),
-        linear-gradient(to bottom, rgba(150,168,185,0.04) 0%, transparent 45%);
+        radial-gradient(ellipse 100% 55% at 50% 0%, rgba(170,185,205,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 65% 60% at 50% 20%, rgba(100,130,170,0.07) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(120,150,185,0.06) 0%, transparent 45%);
       pointer-events: none;
     }
 
@@ -160,17 +160,12 @@
       font-size: clamp(72px, 10vw, 140px);
       font-weight: 300;
       line-height: 0.9;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.06em;
       color: var(--white);
       margin-bottom: 10px;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 1s 0.5s ease forwards;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--gold);
     }
 
     .hero-perspective-tagline {
@@ -228,7 +223,7 @@
       transition: background 0.3s, transform 0.2s;
       display: inline-block;
     }
-    .btn-primary:hover { background: #dde2e8; transform: translateY(-2px); }
+    .btn-primary:hover { background: #e0ba7e; transform: translateY(-2px); }
 
     .btn-ghost {
       font-family: 'Raleway', sans-serif;
@@ -238,7 +233,7 @@
       background: transparent;
       color: var(--starlight);
       padding: 16px 36px;
-      border: 1px solid rgba(200,205,212,0.2);
+      border: 1px solid rgba(154,181,212,0.25);
       text-decoration: none;
       transition: border-color 0.3s, color 0.3s, transform 0.2s;
       display: inline-block;
@@ -288,7 +283,7 @@
     .divider-line {
       flex: 1;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(200,205,212,0.15), transparent);
+      background: linear-gradient(to right, transparent, rgba(154,181,212,0.2), transparent);
     }
     .divider-icon {
       width: 6px; height: 6px;
@@ -343,7 +338,7 @@
 
     .service-card {
       background: var(--deep);
-      border: 1px solid rgba(200,205,212,0.06);
+      border: 1px solid rgba(154,181,212,0.12);
       padding: 48px 40px;
       position: relative;
       overflow: hidden;
@@ -365,7 +360,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 60px;
       font-weight: 300;
-      color: rgba(200,205,212,0.08);
+      color: rgba(201,169,110,0.1);
       line-height: 1;
       margin-bottom: 20px;
     }
@@ -389,8 +384,8 @@
       position: relative;
       z-index: 1;
       background: var(--deep);
-      border-top: 1px solid rgba(200,205,212,0.06);
-      border-bottom: 1px solid rgba(200,205,212,0.06);
+      border-top: 1px solid rgba(154,181,212,0.1);
+      border-bottom: 1px solid rgba(154,181,212,0.1);
       padding: 70px 60px;
       display: flex;
       justify-content: center;
@@ -446,15 +441,15 @@
     .port-item:hover .port-bg { transform: scale(1.07); }
 
     /* Placeholder gradient "images" */
-    .port-item:nth-child(1) .port-bg { background: linear-gradient(135deg, #0d0d10 0%, #181820 40%, #111116 100%); }
-    .port-item:nth-child(2) .port-bg { background: linear-gradient(135deg, #111115 0%, #1a1a1f 60%, #151520 100%); }
-    .port-item:nth-child(3) .port-bg { background: linear-gradient(135deg, #0e0e12 0%, #1a1a20 100%); }
-    .port-item:nth-child(4) .port-bg { background: linear-gradient(135deg, #0a0a0d 0%, #141418 50%, #0e0e12 100%); }
+    .port-item:nth-child(1) .port-bg { background: linear-gradient(135deg, #060a14 0%, #101828 40%, #08111e 100%); }
+    .port-item:nth-child(2) .port-bg { background: linear-gradient(135deg, #07091a 0%, #0c1525 60%, #10182e 100%); }
+    .port-item:nth-child(3) .port-bg { background: linear-gradient(135deg, #060a18 0%, #0e1828 100%); }
+    .port-item:nth-child(4) .port-bg { background: linear-gradient(135deg, #030610 0%, #08101e 50%, #050c16 100%); }
 
     .port-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(10,10,12,0.9) 0%, transparent 50%);
+      background: linear-gradient(to top, rgba(2,3,8,0.92) 0%, transparent 50%);
       opacity: 0;
       transition: opacity 0.4s;
       display: flex;
@@ -495,7 +490,7 @@
       flex-direction: column;
       gap: 0;
       margin-top: 60px;
-      border-left: 1px solid rgba(200,205,212,0.1);
+      border-left: 1px solid rgba(154,181,212,0.15);
     }
 
     .process-step {
@@ -503,7 +498,7 @@
       grid-template-columns: 80px 1fr;
       gap: 40px;
       padding: 40px 0 40px 48px;
-      border-bottom: 1px solid rgba(200,205,212,0.06);
+      border-bottom: 1px solid rgba(154,181,212,0.08);
       position: relative;
     }
     .process-step::before {
@@ -520,7 +515,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 48px;
       font-weight: 300;
-      color: rgba(200,205,212,0.12);
+      color: rgba(201,169,110,0.15);
       line-height: 1;
     }
 
@@ -548,7 +543,7 @@
     }
 
     .gear-item {
-      border: 1px solid rgba(200,205,212,0.08);
+      border: 1px solid rgba(154,181,212,0.12);
       padding: 32px;
       position: relative;
     }
@@ -590,7 +585,7 @@
       text-transform: uppercase;
       background: transparent;
       color: var(--mist);
-      border: 1px solid rgba(200,205,212,0.15);
+      border: 1px solid rgba(154,181,212,0.2);
       padding: 10px 20px;
       cursor: pointer;
       transition: all 0.3s;
@@ -653,7 +648,7 @@
     .gallery-item-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(10,10,12,0.85) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(2,3,8,0.88) 0%, transparent 55%);
       opacity: 0;
       transition: opacity 0.4s;
       display: flex;
@@ -682,7 +677,7 @@
       position: absolute;
       top: 16px; right: 16px;
       width: 32px; height: 32px;
-      border: 1px solid rgba(200,205,212,0.4);
+      border: 1px solid rgba(201,169,110,0.45);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -698,7 +693,7 @@
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(10,10,12,0.97);
+      background: rgba(2,3,8,0.97);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -764,7 +759,7 @@
       top: 50%;
       transform: translateY(-50%);
       background: none;
-      border: 1px solid rgba(200,205,212,0.2);
+      border: 1px solid rgba(201,169,110,0.25);
       color: var(--gold);
       width: 44px; height: 44px;
       font-size: 18px;
@@ -799,7 +794,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,205,212,0.04) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(74,127,193,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -814,11 +809,10 @@
     .contact-title em { color: var(--gold); font-style: italic; }
 
     .contact-sub {
-      font-size: 16px;
+      font-size: 20px;
       color: var(--mist);
       margin-bottom: 52px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
     }
 
     .contact-email {
@@ -837,7 +831,7 @@
     footer {
       position: relative;
       z-index: 1;
-      border-top: 1px solid rgba(200,205,212,0.07);
+      border-top: 1px solid rgba(154,181,212,0.1);
       padding: 40px 60px;
       display: flex;
       align-items: center;
@@ -848,13 +842,14 @@
       font-family: 'Raleway', sans-serif;
       font-size: 11px;
       letter-spacing: 0.3em;
+      text-transform: uppercase;
       color: var(--mist);
     }
     .footer-logo span { color: var(--gold); }
 
     .footer-copy {
       font-size: 11px;
-      color: rgba(200,205,212,0.3);
+      color: rgba(154,181,212,0.4);
       letter-spacing: 0.1em;
     }
 
@@ -867,7 +862,7 @@
       font-size: 11px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(200,205,212,0.3);
+      color: rgba(154,181,212,0.4);
       text-decoration: none;
       transition: color 0.3s;
     }
@@ -927,7 +922,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Aether <span>Aerial</span></a>
+  <a href="#" class="nav-logo">AETHER <span>AERIAL</span></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
@@ -942,7 +937,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-atmosphere"></div>
-  <h1 class="hero-title"><em>Aether</em><br>Aerial</h1>
+  <h1 class="hero-title">AETHER<br>AERIAL</h1>
   <p class="hero-perspective-tagline">Perspective. Elevated.</p>
   <span class="hero-subtitle-word">Cinematography</span>
   <p class="hero-tagline">Where the sky becomes your canvas — and every frame tells a story from above.</p>
@@ -966,7 +961,7 @@
 <div class="section">
   <div class="two-col">
     <div class="reveal">
-      <p class="section-label">About Aether Aerial</p>
+      <p class="section-label">About AETHER AERIAL</p>
       <h2 class="section-heading">Vision <em>elevated</em> beyond the horizon</h2>
     </div>
     <div class="reveal reveal-delay-1">
@@ -1316,7 +1311,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Aether <span>Aerial</span></div>
+  <div class="footer-logo">AETHER <span>AERIAL</span></div>
   <p class="footer-copy">© 2026 ValTec LLC. All rights reserved.</p>
   <p class="footer-copy" style="font-size:11px; margin-top:6px;">VOB · Veteran Owned Business</p>
   <ul class="footer-links">

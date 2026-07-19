@@ -405,6 +405,7 @@
       font-weight: 300;
       color: var(--white);
       line-height: 1;
+      font-variant-numeric: lining-nums;
     }
     .stat-number span { color: var(--gold); }
 
@@ -922,6 +923,27 @@
       .form-group.full { grid-column: 1; }
     }
 
+    /* VOB BANNER */
+    .vob-banner {
+      position: relative;
+      z-index: 1;
+      background: var(--deep);
+      border-top: 1px solid rgba(139,164,200,0.07);
+      border-bottom: 1px solid rgba(139,164,200,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 30px 60px;
+    }
+    .vob-banner-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
     /* FOOTER */
     footer {
       position: relative;
@@ -1233,8 +1255,8 @@
     <div class="stat-label">Full Gimbal Coverage</div>
   </div>
   <div class="stat-item reveal reveal-delay-3">
-    <div class="stat-number">48<span>hr</span></div>
-    <div class="stat-label">Standard Turnaround</div>
+    <div class="stat-number">6K<span>+</span></div>
+    <div class="stat-label">Cinema-Grade Resolution</div>
   </div>
 </div>
 
@@ -1560,6 +1582,13 @@
     </div>
   </form>
 </section>
+
+<!-- VOB BANNER -->
+<div class="vob-banner">
+  <div class="divider-icon"></div>
+  <span class="vob-banner-text">Veteran Owned &amp; Operated</span>
+  <div class="divider-icon"></div>
+</div>
 
 <!-- FOOTER -->
 <footer>

@@ -79,7 +79,9 @@
       justify-content: space-between;
       padding: 28px 60px;
       background: linear-gradient(to bottom, rgba(2,3,8,0.97) 0%, transparent 100%);
+      transition: box-shadow 0.3s ease;
     }
+    nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
 
     .nav-logo {
       font-family: 'Raleway', sans-serif;
@@ -347,19 +349,9 @@
       padding: 48px 40px;
       position: relative;
       overflow: hidden;
-      transition: background 0.4s;
+      transition: background 0.4s, border-color 0.4s ease;
     }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-    .service-card:hover { background: var(--nebula); }
-    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--nebula); border-color: rgba(201,169,110,0.4); }
 
     .service-number {
       font-family: 'Cormorant Garamond', serif;
@@ -500,9 +492,7 @@
     }
 
     .process-step {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 40px;
+      display: block;
       padding: 40px 0 40px 48px;
       border-bottom: 1px solid rgba(154,181,212,0.08);
       position: relative;
@@ -552,7 +542,9 @@
       border: 1px solid rgba(154,181,212,0.12);
       padding: 32px;
       position: relative;
+      transition: border-color 0.4s ease;
     }
+    .gear-item:hover { border-color: rgba(201,169,110,0.4); }
     .gear-item::after {
       content: '';
       position: absolute;
@@ -1152,7 +1144,7 @@
       .port-item { grid-column: 1 / -1 !important; grid-row: auto !important; }
       .gear-row { grid-template-columns: repeat(2, 1fr); }
       .two-col { grid-template-columns: 1fr; gap: 48px; }
-      .process-step { grid-template-columns: 50px 1fr; gap: 20px; padding-left: 30px; }
+      .process-step { padding-left: 30px; }
       footer { flex-direction: column; gap: 20px; text-align: center; }
       .float-cta { bottom: 24px; right: 20px; }
     }
@@ -1240,32 +1232,26 @@
   <h2 class="section-heading reveal reveal-delay-1">What we <em>create</em></h2>
   <div class="services-grid">
     <div class="service-card reveal">
-      <div class="service-number">01</div>
       <div class="service-title">Cinematic Aerial Video</div>
       <p class="service-desc">Sweeping establishing shots, dynamic flyovers, and story-driven aerial sequences delivered in 4K / 6K. Color graded to your project's visual language.</p>
     </div>
     <div class="service-card reveal reveal-delay-1">
-      <div class="service-number">02</div>
       <div class="service-title">Aerial Photography</div>
       <p class="service-desc">High-resolution stills for real estate, architecture, events, and marketing campaigns. Post-processed with precision to deliver print-ready assets.</p>
     </div>
     <div class="service-card reveal reveal-delay-2">
-      <div class="service-number">03</div>
       <div class="service-title">Branded Content</div>
       <p class="service-desc">Visual storytelling for commercial brands, social media campaigns, and promotional reels — crafted with narrative intent and platform-specific optimization.</p>
     </div>
     <div class="service-card reveal">
-      <div class="service-number">04</div>
       <div class="service-title">Real Estate & Architecture</div>
       <p class="service-desc">Luxury property showcases, development reveals, and architectural documentation that commands attention in competitive markets.</p>
     </div>
     <div class="service-card reveal reveal-delay-1">
-      <div class="service-number">05</div>
       <div class="service-title">Event Coverage</div>
       <p class="service-desc">Live events, venue reveals, and special occasions captured from perspectives that ground-based cameras simply cannot reach.</p>
     </div>
     <div class="service-card reveal reveal-delay-2">
-      <div class="service-number">06</div>
       <div class="service-title">Mapping & Inspection</div>
       <p class="service-desc">High-altitude orthographic mapping, infrastructure inspection, and site documentation for construction, engineering, and municipal clients.</p>
     </div>
@@ -1492,28 +1478,24 @@
     </div>
     <div class="process-steps">
       <div class="process-step reveal">
-        <div class="step-num">01</div>
         <div class="step-content">
           <div class="step-title">Pre-Flight Planning</div>
           <p class="step-desc">NOTAM verification, weather assessment, and airspace authorization submitted well in advance. Every engagement is planned with the same discipline expected on a professional job site. FAA Part 107 certified and fully insured.</p>
         </div>
       </div>
       <div class="process-step reveal reveal-delay-1">
-        <div class="step-num">02</div>
         <div class="step-content">
           <div class="step-title">On-Site Execution</div>
           <p class="step-desc">Equipment checks, final airspace confirmation, and a deliberate flight plan before anything leaves the ground. Every angle is chosen with purpose, every maneuver imagined for how it will feel in the final cut.</p>
         </div>
       </div>
       <div class="process-step reveal reveal-delay-2">
-        <div class="step-num">03</div>
         <div class="step-content">
           <div class="step-title">Post-Production</div>
           <p class="step-desc">Footage moves into DaVinci Resolve where the story gets its finish. Color graded to the tone your project deserves, cinematic and considered from the first frame to the last.</p>
         </div>
       </div>
       <div class="process-step reveal reveal-delay-3">
-        <div class="step-num">04</div>
         <div class="step-content">
           <div class="step-title">Structured Delivery</div>
           <p class="step-desc">Final assets organized, formatted, and in your hands without delay. Because the work doesn't end at landing.</p>
@@ -1797,6 +1779,12 @@
     if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % visibleItems.length; updateLightbox(); }
     if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length; updateLightbox(); }
   });
+
+  // Nav scroll shadow
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
   // Mobile hamburger menu
   const hamburger = document.getElementById('navHamburger');

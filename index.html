@@ -1111,6 +1111,35 @@
     }
     .nav-drawer-cta a:hover { background: var(--gold); color: var(--void); }
 
+    /* FLOATING CTA */
+    .float-cta {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--deep);
+      border: 1px solid var(--gold-dim);
+      padding: 12px 22px;
+      text-decoration: none;
+      border-radius: 2px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,169,110,0.05);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s, color 0.3s;
+    }
+    .float-cta.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .float-cta:hover { background: var(--gold); color: var(--void); }
+
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
@@ -1125,10 +1154,13 @@
       .two-col { grid-template-columns: 1fr; gap: 48px; }
       .process-step { grid-template-columns: 50px 1fr; gap: 20px; padding-left: 30px; }
       footer { flex-direction: column; gap: 20px; text-align: center; }
+      .float-cta { bottom: 24px; right: 20px; }
     }
   </style>
 </head>
 <body>
+
+<a href="#contact" class="float-cta" id="floatCta">Book a Flight</a>
 
 <canvas id="stars-canvas"></canvas>
 <div class="cursor" id="cursor"></div>
@@ -1791,6 +1823,38 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
   });
+
+  // Floating CTA visibility
+  const floatCta = document.getElementById('floatCta');
+  const heroSection = document.querySelector('.hero');
+  const contactSection = document.querySelector('.contact-section');
+  let heroPassed = false;
+  let contactVisible = false;
+
+  function updateFloatCta() {
+    if (heroPassed && !contactVisible) {
+      floatCta.classList.add('visible');
+    } else {
+      floatCta.classList.remove('visible');
+    }
+  }
+
+  const heroObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      heroPassed = !e.isIntersecting;
+      updateFloatCta();
+    });
+  }, { threshold: 0.1 });
+
+  const contactObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      contactVisible = e.isIntersecting;
+      updateFloatCta();
+    });
+  }, { threshold: 0.05 });
+
+  heroObs.observe(heroSection);
+  contactObs.observe(contactSection);
 </script>
 </body>
 </html>

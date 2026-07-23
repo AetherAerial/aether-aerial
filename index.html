@@ -119,7 +119,7 @@
       border: 1px solid var(--gold-dim);
       padding: 10px 22px;
       text-decoration: none;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
     }
     .nav-cta:hover {
       background: var(--gold);
@@ -1825,16 +1825,18 @@
 
   // Floating CTA visibility
   const floatCta = document.getElementById('floatCta');
+  const navCta = document.querySelector('.nav-cta');
   const heroSection = document.querySelector('.hero');
   const contactSection = document.querySelector('.contact-section');
   let heroPassed = false;
   let contactVisible = false;
 
   function updateFloatCta() {
-    if (heroPassed && !contactVisible) {
-      floatCta.classList.add('visible');
-    } else {
-      floatCta.classList.remove('visible');
+    const showFloat = heroPassed && !contactVisible;
+    floatCta.classList.toggle('visible', showFloat);
+    if (navCta) {
+      navCta.style.opacity = showFloat ? '0' : '';
+      navCta.style.pointerEvents = showFloat ? 'none' : '';
     }
   }
 

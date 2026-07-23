@@ -354,14 +354,15 @@
     .service-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
+      inset: 0;
+      border: 1px solid var(--gold);
+      opacity: 0;
+      box-shadow: 0 0 24px rgba(201,169,110,0.35), inset 0 0 24px rgba(201,169,110,0.08);
+      transition: opacity 0.4s ease;
+      pointer-events: none;
     }
     .service-card:hover { background: var(--nebula); }
-    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover::before { opacity: 1; }
 
     .service-number {
       font-family: 'Cormorant Garamond', serif;

@@ -93,6 +93,16 @@
       height: 150px;
       width: auto;
       display: block;
+      transition: height 0.45s cubic-bezier(0.23,1,0.32,1),
+                  opacity 0.45s cubic-bezier(0.23,1,0.32,1);
+    }
+    .nav-logo.shrunk img {
+      height: 75px;
+      opacity: 0.45;
+    }
+    .nav-logo.shrunk:hover img {
+      height: 150px;
+      opacity: 1;
     }
 
     .nav-links {
@@ -2033,18 +2043,7 @@
             '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
           '</div>';
       }
-      if (g) {
-        tile.addEventListener('click', () => {
-          activeGroup = (activeGroup === g) ? null : g;
-          renderGrid();
-          browseSlide = 0;
-          buildActiveItems();
-          renderBrowseItems();
-          applyBrowseLayout(false);
-        });
-      } else {
-        tile.addEventListener('click', () => openLightbox(item));
-      }
+      tile.addEventListener('click', () => openLightbox(item));
       workGrid.appendChild(tile);
     }
     startGridCoordinator();
@@ -2326,10 +2325,13 @@
     if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length; updateLbViewer(); }
   });
 
-  // Nav scroll shadow
-  const navEl = document.querySelector('nav');
+  // Nav scroll state
+  const navEl   = document.querySelector('nav');
+  const navLogo = document.querySelector('.nav-logo');
   window.addEventListener('scroll', () => {
-    navEl.classList.toggle('scrolled', window.scrollY > 40);
+    const past = window.scrollY > 40;
+    navEl.classList.toggle('scrolled', past);
+    navLogo.classList.toggle('shrunk', past);
   }, { passive: true });
 
   // Mobile hamburger menu

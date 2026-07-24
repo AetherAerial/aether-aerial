@@ -819,6 +819,33 @@
       .browse-arrow { width: 32px; height: 32px; font-size: 16px; }
     }
 
+    .tile-mute-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 28px;
+      height: 28px;
+      background: rgba(2,3,8,0.55);
+      border: 1px solid rgba(201,169,110,0.3);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .tile-mute-btn:hover { background: rgba(201,169,110,0.18); border-color: rgba(201,169,110,0.55); }
+
+    .lightbox-video {
+      max-width: 90vw;
+      max-height: 80vh;
+      display: none;
+      outline: none;
+      background: var(--void);
+    }
+
     /* CONTACT */
     .contact-section {
       position: relative;
@@ -1228,7 +1255,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" src="https://media.aetheraerial.com/hero/silversands.mp4" autoplay muted loop playsinline poster=""></video>
+  <video class="hero-video" src="https://media.aetheraerial.com/hero/silversands.mp4" autoplay muted playsinline preload="auto" poster=""></video>
   <div class="hero-atmosphere"></div>
   <h1 class="hero-title">AETHER<br>AERIAL</h1>
   <p class="hero-perspective-tagline">Perspective. Elevated.</p>
@@ -1410,164 +1437,50 @@
   <!-- Gallery item data (hidden; drives lightbox) -->
   <div class="gallery-data">
 
-    <!-- ITEM 1 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Coastal Estate Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-1.jpg" alt="Coastal Estate Reveal" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Coastal Estate Reveal</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
+    <!-- GROUP 1 — Modern Construction Reveal -->
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-1.jpg" alt="Modern Construction Reveal" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-2.jpg" alt="Modern Construction Reveal" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-3.jpg" alt="Modern Construction Reveal" />
     </div>
 
-    <!-- ITEM 2 -->
+    <!-- GROUP 2 — Winter Estate Skyline -->
+    <div class="gallery-item" data-category="real-estate" data-group="Winter Estate Skyline" data-title="Winter Estate Skyline" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-4.jpg" alt="Winter Estate Skyline" />
+    </div>
+
+    <!-- GROUP 3 — Architectural Detail Series -->
+    <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-5.jpg" alt="Architectural Detail Series" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-6.jpg" alt="Architectural Detail Series" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-7.jpg" alt="Architectural Detail Series" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-8.jpg" alt="Architectural Detail Series" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate" data-type="video" data-video="https://media.aetheraerial.com/promo/mavic4-promo.mp4">
+    </div>
+
+    <!-- Other categories (placeholder — images TBD) -->
     <div class="gallery-item" data-category="cinematic" data-title="Golden Hour Series" data-cat="Cinematic">
-      <div class="gallery-placeholder">
-        <div class="gallery-placeholder-icon">◈</div>
-        <div class="gallery-placeholder-text">Add Image</div>
-      </div>
-      <!-- <img src="YOUR_IMAGE_URL_HERE" alt="Golden Hour Series" /> -->
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Cinematic</p>
-          <p class="gallery-item-title">Golden Hour Series</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
+      <!-- <img src="..." alt="Golden Hour Series" /> -->
     </div>
-
-    <!-- ITEM 3 -->
     <div class="gallery-item" data-category="branded" data-title="Urban Brand Campaign" data-cat="Branded">
-      <div class="gallery-placeholder">
-        <div class="gallery-placeholder-icon">◈</div>
-        <div class="gallery-placeholder-text">Add Image</div>
-      </div>
-      <!-- <img src="YOUR_IMAGE_URL_HERE" alt="Urban Brand Campaign" /> -->
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Branded</p>
-          <p class="gallery-item-title">Urban Brand Campaign</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
+      <!-- <img src="..." alt="Urban Brand Campaign" /> -->
     </div>
-
-    <!-- ITEM 4 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Luxury Property Showcase" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-2.jpg" alt="Luxury Property Showcase" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Luxury Property Showcase</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
-    </div>
-
-    <!-- ITEM 5 -->
     <div class="gallery-item" data-category="events" data-title="Shoreline Event Coverage" data-cat="Events">
-      <div class="gallery-placeholder">
-        <div class="gallery-placeholder-icon">◈</div>
-        <div class="gallery-placeholder-text">Add Image</div>
-      </div>
-      <!-- <img src="YOUR_IMAGE_URL_HERE" alt="Shoreline Event Coverage" /> -->
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Events</p>
-          <p class="gallery-item-title">Shoreline Event Coverage</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
+      <!-- <img src="..." alt="Shoreline Event Coverage" /> -->
     </div>
-
-    <!-- ITEM 6 -->
     <div class="gallery-item" data-category="cinematic" data-title="Aerial Dusk Sequence" data-cat="Cinematic">
-      <div class="gallery-placeholder">
-        <div class="gallery-placeholder-icon">◈</div>
-        <div class="gallery-placeholder-text">Add Image</div>
-      </div>
-      <!-- <img src="YOUR_IMAGE_URL_HERE" alt="Aerial Dusk Sequence" /> -->
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Cinematic</p>
-          <p class="gallery-item-title">Aerial Dusk Sequence</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
-    </div>
-
-    <!-- ITEM 7 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Coastal Estate Series" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-3.jpg" alt="Coastal Estate Series" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Coastal Estate Series</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
-    </div>
-
-    <!-- ITEM 8 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Estate Aerial Overview" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-4.jpg" alt="Estate Aerial Overview" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Estate Aerial Overview</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
-    </div>
-
-    <!-- ITEM 9 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Aerial Property Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-5.jpg" alt="Aerial Property Reveal" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Aerial Property Reveal</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
-    </div>
-
-    <!-- ITEM 10 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Luxury Estate Showcase" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-6.jpg" alt="Luxury Estate Showcase" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Luxury Estate Showcase</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
-    </div>
-
-    <!-- ITEM 11 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Estate Property Series" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-7.jpg" alt="Estate Property Series" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Estate Property Series</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
-    </div>
-
-    <!-- ITEM 12 -->
-    <div class="gallery-item" data-category="real-estate" data-title="Aerial Estate View" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-8.jpg" alt="Aerial Estate View" />
-      <div class="gallery-item-overlay">
-        <div class="gallery-item-info">
-          <p class="gallery-item-cat">Real Estate</p>
-          <p class="gallery-item-title">Aerial Estate View</p>
-        </div>
-      </div>
-      <div class="gallery-expand-icon">+</div>
+      <!-- <img src="..." alt="Aerial Dusk Sequence" /> -->
     </div>
 
   </div>
@@ -1580,6 +1493,7 @@
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
     <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    <video class="lightbox-video" id="lightboxVideo" controls playsinline src=""></video>
     <div class="lightbox-caption">
       <p class="lightbox-caption-cat" id="lightboxCat"></p>
       <p class="lightbox-caption-title" id="lightboxTitle"></p>
@@ -1783,9 +1697,13 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  const ICON_MUTED   = '<svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M9 3.5L5.5 6H2.5C2.22 6 2 6.22 2 6.5v3c0 .28.22.5.5.5H5.5L9 12.5V3.5z"/><line x1="11.5" y1="5.5" x2="15.5" y2="10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15.5" y1="5.5" x2="11.5" y2="10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  const ICON_UNMUTED = '<svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M9 3.5L5.5 6H2.5C2.22 6 2 6.22 2 6.5v3c0 .28.22.5.5.5H5.5L9 12.5V3.5z"/><path d="M11.5 5.5a3.5 3.5 0 010 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M13.5 3.5a6 6 0 010 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
+
   function buildActiveItems() {
     activeItems = [...galleryItems].filter(item =>
-      (currentFilter === 'all' || item.dataset.category === currentFilter) && item.querySelector('img')
+      (currentFilter === 'all' || item.dataset.category === currentFilter) &&
+      (item.querySelector('img') || item.dataset.type === 'video')
     );
     galleryItems.forEach(item => {
       item.style.display = activeItems.includes(item) ? '' : 'none';
@@ -1795,9 +1713,22 @@
   // ── HIGHLIGHT GRID ──
   function renderGrid() {
     workGrid.innerHTML = '';
-    const count = Math.min(GRID_COUNT, activeItems.length);
-    for (let i = 0; i < count; i++) {
-      const item = activeItems[i];
+    let gridItems;
+    if (currentFilter === 'real-estate') {
+      const seen = new Set();
+      gridItems = [];
+      for (const item of activeItems) {
+        const g = item.dataset.group;
+        if (g && !seen.has(g) && item.querySelector('img')) {
+          seen.add(g);
+          gridItems.push(item);
+          if (gridItems.length >= GRID_COUNT) break;
+        }
+      }
+    } else {
+      gridItems = activeItems.filter(i => i.querySelector('img')).slice(0, GRID_COUNT);
+    }
+    for (const item of gridItems) {
       const img  = item.querySelector('img');
       const tile = document.createElement('div');
       tile.className = 'work-grid-item';
@@ -1816,15 +1747,41 @@
   function renderBrowseItems() {
     browseTrack.innerHTML = '';
     activeItems.forEach(item => {
-      const img  = item.querySelector('img');
       const tile = document.createElement('div');
       tile.className = 'browse-item';
-      tile.innerHTML =
-        '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
-        '<div class="browse-item-overlay">' +
+      if (item.dataset.type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = item.dataset.video || '';
+        vid.autoplay = true;
+        vid.muted = true;
+        vid.loop = true;
+        vid.playsInline = true;
+        vid.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:center;display:block;';
+        const muteBtn = document.createElement('button');
+        muteBtn.className = 'tile-mute-btn';
+        muteBtn.innerHTML = ICON_MUTED;
+        muteBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          vid.muted = !vid.muted;
+          muteBtn.innerHTML = vid.muted ? ICON_MUTED : ICON_UNMUTED;
+        });
+        const overlay = document.createElement('div');
+        overlay.className = 'browse-item-overlay';
+        overlay.innerHTML =
           '<p class="browse-item-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
-          '<p class="browse-item-title">' + escH(item.dataset.title || '') + '</p>' +
-        '</div>';
+          '<p class="browse-item-title">' + escH(item.dataset.title || '') + '</p>';
+        tile.appendChild(vid);
+        tile.appendChild(muteBtn);
+        tile.appendChild(overlay);
+      } else {
+        const img = item.querySelector('img');
+        tile.innerHTML =
+          '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
+          '<div class="browse-item-overlay">' +
+            '<p class="browse-item-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
+            '<p class="browse-item-title">' + escH(item.dataset.title || '') + '</p>' +
+          '</div>';
+      }
       tile.addEventListener('click', () => openLightbox(item));
       browseTrack.appendChild(tile);
     });
@@ -1877,7 +1834,7 @@
   filterBtns.forEach(btn => {
     const cat = btn.dataset.filter;
     if (cat === 'all') return;
-    if (![...galleryItems].some(i => i.dataset.category === cat && i.querySelector('img')))
+    if (![...galleryItems].some(i => i.dataset.category === cat && (i.querySelector('img') || i.dataset.type === 'video')))
       btn.style.display = 'none';
   });
 
@@ -1936,11 +1893,23 @@
     document.body.style.overflow = 'hidden';
   }
 
+  const lightboxVideo = document.getElementById('lightboxVideo');
+
   function updateLightbox() {
     const item = visibleItems[currentIndex];
-    const img  = item.querySelector('img');
-    lightboxImg.src = img ? img.src : '';
-    lightboxImg.style.display = img ? 'block' : 'none';
+    if (item.dataset.type === 'video') {
+      lightboxImg.style.display = 'none';
+      lightboxVideo.src = item.dataset.video || '';
+      lightboxVideo.style.display = 'block';
+      lightboxVideo.play();
+    } else {
+      lightboxVideo.pause();
+      lightboxVideo.src = '';
+      lightboxVideo.style.display = 'none';
+      const img = item.querySelector('img');
+      lightboxImg.src = img ? img.src : '';
+      lightboxImg.style.display = img ? 'block' : 'none';
+    }
     lightboxCat.textContent   = item.dataset.cat;
     lightboxTitle.textContent = item.dataset.title;
   }
@@ -1948,6 +1917,10 @@
   function closeLightbox() {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    lightboxVideo.pause();
+    lightboxVideo.src = '';
+    lightboxVideo.style.display = 'none';
+    lightboxImg.style.display = 'block';
   }
 
   lightboxClose.addEventListener('click', closeLightbox);
@@ -2036,6 +2009,16 @@
 
   heroObs.observe(heroSection);
   contactObs.observe(contactSection);
+
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.addEventListener('timeupdate', () => {
+      if (heroVideo.duration && heroVideo.currentTime >= heroVideo.duration - 0.15) {
+        heroVideo.currentTime = 0;
+        heroVideo.play();
+      }
+    });
+  }
 </script>
 </body>
 </html>

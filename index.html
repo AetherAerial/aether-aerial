@@ -167,11 +167,58 @@
     .hero-atmosphere {
       position: absolute;
       inset: 0;
+      z-index: 1;
       background:
         radial-gradient(ellipse 100% 55% at 50% 0%, rgba(170,185,205,0.1) 0%, transparent 65%),
         radial-gradient(ellipse 65% 60% at 50% 20%, rgba(100,130,170,0.07) 0%, transparent 70%),
         linear-gradient(to bottom, rgba(120,150,185,0.06) 0%, transparent 45%);
       pointer-events: none;
+    }
+
+    .hero-title-scrim {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(900px, 95vw);
+      height: 420px;
+      background: radial-gradient(ellipse at center, rgba(2,3,8,0.58) 0%, rgba(2,3,8,0.3) 35%, transparent 68%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-accent {
+      display: flex;
+      align-items: center;
+      width: min(580px, 82vw);
+      margin: 16px auto;
+      position: relative;
+      z-index: 3;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s ease forwards;
+    }
+    .hero-accent-line {
+      flex: 1;
+      height: 1px;
+      position: relative;
+    }
+    .hero-accent-line.left  { background: linear-gradient(to right, transparent, var(--gold)); }
+    .hero-accent-line.right { background: linear-gradient(to right, var(--gold), transparent); }
+    .hero-accent-line::after {
+      content: '';
+      position: absolute;
+      inset: -2px 0;
+      background: inherit;
+      filter: blur(3px);
+      opacity: 0.5;
+    }
+    .hero-accent-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      box-shadow: 0 0 6px 2px rgba(201,169,110,0.5), 0 0 14px 4px rgba(201,169,110,0.22);
     }
 
     .hero-eyebrow {
@@ -193,7 +240,9 @@
       line-height: 0.9;
       letter-spacing: 0.06em;
       color: var(--white);
-      margin-bottom: 10px;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 3;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 1s 0.5s ease forwards;
@@ -204,8 +253,10 @@
       font-size: clamp(22px, 2vw, 28px);
       color: var(--gold);
       letter-spacing: 0.12em;
-      margin-top: 12px;
+      margin-top: 0;
       margin-bottom: 0;
+      position: relative;
+      z-index: 3;
     }
 
     .hero-subtitle-word {
@@ -284,6 +335,7 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
+      z-index: 3;
       opacity: 0;
       animation: fadeUp 0.9s 1.8s ease forwards;
     }
@@ -1260,7 +1312,13 @@
 <section class="hero">
   <video class="hero-video" src="https://media.aetheraerial.com/hero/silversands.mp4" autoplay muted playsinline preload="auto" poster=""></video>
   <div class="hero-atmosphere"></div>
+  <div class="hero-title-scrim"></div>
   <h1 class="hero-title">AETHER<br>AERIAL</h1>
+  <div class="hero-accent">
+    <div class="hero-accent-line left"></div>
+    <div class="hero-accent-dot"></div>
+    <div class="hero-accent-line right"></div>
+  </div>
   <p class="hero-perspective-tagline">Perspective. Elevated.</p>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
@@ -1442,7 +1500,20 @@
 
     <!-- ── REAL ESTATE ──────────────────────────────────────────── -->
 
-    <!-- GROUP: Architectural Detail Series (re-5 … re-8 + video) -->
+    <!-- GROUP: Modern Construction Reveal (re-1, re-2, re-3, video) -->
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-1.jpg" alt="Modern Construction Reveal" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-2.jpg" alt="Modern Construction Reveal" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-3.jpg" alt="Modern Construction Reveal" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate" data-type="video" data-video="https://media.aetheraerial.com/promo/mavic4-promo.mp4">
+    </div>
+
+    <!-- GROUP: Architectural Detail Series (re-5 … re-8) -->
     <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate">
       <img src="https://media.aetheraerial.com/gallery/re-5.jpg" alt="Architectural Detail Series" />
     </div>
@@ -1454,19 +1525,6 @@
     </div>
     <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate">
       <img src="https://media.aetheraerial.com/gallery/re-8.jpg" alt="Architectural Detail Series" />
-    </div>
-    <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate" data-type="video" data-video="https://media.aetheraerial.com/promo/mavic4-promo.mp4">
-    </div>
-
-    <!-- GROUP: Modern Construction Reveal (re-1 … re-3) -->
-    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-1.jpg" alt="Modern Construction Reveal" />
-    </div>
-    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-2.jpg" alt="Modern Construction Reveal" />
-    </div>
-    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-3.jpg" alt="Modern Construction Reveal" />
     </div>
 
     <!-- GROUP: Winter Estate Skyline (re-4) -->
@@ -1726,33 +1784,53 @@
       (currentFilter === 'all' || item.dataset.category === currentFilter) &&
       (item.querySelector('img') || item.dataset.type === 'video')
     );
-    // One representative (first img-bearing item) per distinct data-group
-    const seen = new Set();
-    const gridItems = [];
+    // One representative per group: video wins over first image
+    const groupReps = new Map(); // preserves insertion (DOM) order
     for (const item of catItems) {
       const g = item.dataset.group;
-      if (g && !seen.has(g) && item.querySelector('img')) {
-        seen.add(g);
-        gridItems.push(item);
-        if (gridItems.length >= GRID_COUNT) break;
-      }
+      if (!g) continue;
+      if (!groupReps.has(g) && item.querySelector('img')) groupReps.set(g, item); // first image
+      if (item.dataset.type === 'video') groupReps.set(g, item);                  // video overrides
     }
+    const gridItems = [...groupReps.values()].slice(0, GRID_COUNT);
     // Fallback for ungrouped categories: first 3 image items
     if (gridItems.length === 0) {
       gridItems.push(...catItems.filter(i => i.querySelector('img')).slice(0, GRID_COUNT));
     }
     for (const item of gridItems) {
-      const img = item.querySelector('img');
-      const g   = item.dataset.group || null;
+      const g    = item.dataset.group || null;
       const tile = document.createElement('div');
       tile.className = 'work-grid-item' + (g && activeGroup === g ? ' active' : '');
       if (g) tile.dataset.group = g;
-      tile.innerHTML =
-        '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
-        '<div class="work-grid-overlay">' +
-          '<p class="work-grid-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
-          '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
-        '</div>';
+      if (item.dataset.type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = item.dataset.video || '';
+        vid.autoplay = true; vid.muted = true; vid.loop = true; vid.playsInline = true;
+        vid.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:center;display:block;';
+        const muteBtn = document.createElement('button');
+        muteBtn.className = 'tile-mute-btn';
+        muteBtn.innerHTML = ICON_MUTED;
+        muteBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          vid.muted = !vid.muted;
+          muteBtn.innerHTML = vid.muted ? ICON_MUTED : ICON_UNMUTED;
+        });
+        const overlay = document.createElement('div');
+        overlay.className = 'work-grid-overlay';
+        overlay.innerHTML = '<p class="work-grid-cat">' + escH(item.dataset.cat || '') + '</p>' +
+                            '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>';
+        tile.appendChild(vid);
+        tile.appendChild(muteBtn);
+        tile.appendChild(overlay);
+      } else {
+        const img = item.querySelector('img');
+        tile.innerHTML =
+          '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
+          '<div class="work-grid-overlay">' +
+            '<p class="work-grid-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
+            '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
+          '</div>';
+      }
       if (g) {
         tile.addEventListener('click', () => {
           activeGroup = (activeGroup === g) ? null : g;

@@ -84,15 +84,16 @@
     nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
 
     .nav-logo {
-      font-family: 'Raleway', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      color: var(--white);
-      text-transform: uppercase;
+      display: flex;
+      align-items: center;
       text-decoration: none;
+      flex-shrink: 0;
     }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
 
     .nav-links {
       display: flex;
@@ -1351,7 +1352,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">AETHER <span>AERIAL</span></a>
+  <a href="#" class="nav-logo"><img src="Aether_White.png" alt="Aether Aerial"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>

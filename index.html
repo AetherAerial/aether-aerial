@@ -819,6 +819,9 @@
       .browse-arrow { width: 32px; height: 32px; font-size: 16px; }
     }
 
+    .work-grid-item.active { box-shadow: inset 0 0 0 2px var(--gold); }
+    .work-grid-item[data-group] { cursor: pointer; }
+
     .tile-mute-btn {
       position: absolute;
       bottom: 10px;
@@ -1437,23 +1440,9 @@
   <!-- Gallery item data (hidden; drives lightbox) -->
   <div class="gallery-data">
 
-    <!-- GROUP 1 — Modern Construction Reveal -->
-    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-1.jpg" alt="Modern Construction Reveal" />
-    </div>
-    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-2.jpg" alt="Modern Construction Reveal" />
-    </div>
-    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-3.jpg" alt="Modern Construction Reveal" />
-    </div>
+    <!-- ── REAL ESTATE ──────────────────────────────────────────── -->
 
-    <!-- GROUP 2 — Winter Estate Skyline -->
-    <div class="gallery-item" data-category="real-estate" data-group="Winter Estate Skyline" data-title="Winter Estate Skyline" data-cat="Real Estate">
-      <img src="https://media.aetheraerial.com/gallery/re-4.jpg" alt="Winter Estate Skyline" />
-    </div>
-
-    <!-- GROUP 3 — Architectural Detail Series -->
+    <!-- GROUP: Architectural Detail Series (re-5 … re-8 + video) -->
     <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate">
       <img src="https://media.aetheraerial.com/gallery/re-5.jpg" alt="Architectural Detail Series" />
     </div>
@@ -1469,18 +1458,35 @@
     <div class="gallery-item" data-category="real-estate" data-group="Architectural Detail Series" data-title="Architectural Detail Series" data-cat="Real Estate" data-type="video" data-video="https://media.aetheraerial.com/promo/mavic4-promo.mp4">
     </div>
 
-    <!-- Other categories (placeholder — images TBD) -->
-    <div class="gallery-item" data-category="cinematic" data-title="Golden Hour Series" data-cat="Cinematic">
-      <!-- <img src="..." alt="Golden Hour Series" /> -->
+    <!-- GROUP: Modern Construction Reveal (re-1 … re-3) -->
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-1.jpg" alt="Modern Construction Reveal" />
     </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-2.jpg" alt="Modern Construction Reveal" />
+    </div>
+    <div class="gallery-item" data-category="real-estate" data-group="Modern Construction Reveal" data-title="Modern Construction Reveal" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-3.jpg" alt="Modern Construction Reveal" />
+    </div>
+
+    <!-- GROUP: Winter Estate Skyline (re-4) -->
+    <div class="gallery-item" data-category="real-estate" data-group="Winter Estate Skyline" data-title="Winter Estate Skyline" data-cat="Real Estate">
+      <img src="https://media.aetheraerial.com/gallery/re-4.jpg" alt="Winter Estate Skyline" />
+    </div>
+
+    <!-- ── CINEMATIC (scaffold — add groups/items here) ─────────
+         Each item: data-category="cinematic" data-group="Group Name"
+                    data-title="Group Name" data-cat="Cinematic"
+                    + <img> or data-type="video" data-video="url"
+         Tab auto-shows once any item with an image/video is added.
+    ──────────────────────────────────────────────────────────── -->
+
+    <!-- ── BRANDED / EVENTS (placeholder — images TBD) ─────── -->
     <div class="gallery-item" data-category="branded" data-title="Urban Brand Campaign" data-cat="Branded">
       <!-- <img src="..." alt="Urban Brand Campaign" /> -->
     </div>
     <div class="gallery-item" data-category="events" data-title="Shoreline Event Coverage" data-cat="Events">
       <!-- <img src="..." alt="Shoreline Event Coverage" /> -->
-    </div>
-    <div class="gallery-item" data-category="cinematic" data-title="Aerial Dusk Sequence" data-cat="Cinematic">
-      <!-- <img src="..." alt="Aerial Dusk Sequence" /> -->
     </div>
 
   </div>
@@ -1683,6 +1689,7 @@
 
   let activeItems    = [];
   let currentFilter  = 'all';
+  let activeGroup    = null;
   let browseSlide    = 0;
   let browseIPS      = 3;        // items per slide; recalculated on resize
   const GRID_COUNT   = 3;        // tiles shown in highlight grid
@@ -1703,6 +1710,7 @@
   function buildActiveItems() {
     activeItems = [...galleryItems].filter(item =>
       (currentFilter === 'all' || item.dataset.category === currentFilter) &&
+      (!activeGroup || item.dataset.group === activeGroup) &&
       (item.querySelector('img') || item.dataset.type === 'video')
     );
     galleryItems.forEach(item => {
@@ -1713,32 +1721,50 @@
   // ── HIGHLIGHT GRID ──
   function renderGrid() {
     workGrid.innerHTML = '';
-    let gridItems;
-    if (currentFilter === 'real-estate') {
-      const seen = new Set();
-      gridItems = [];
-      for (const item of activeItems) {
-        const g = item.dataset.group;
-        if (g && !seen.has(g) && item.querySelector('img')) {
-          seen.add(g);
-          gridItems.push(item);
-          if (gridItems.length >= GRID_COUNT) break;
-        }
+    // Collect from current category independent of activeGroup (grid always shows all groups)
+    const catItems = [...galleryItems].filter(item =>
+      (currentFilter === 'all' || item.dataset.category === currentFilter) &&
+      (item.querySelector('img') || item.dataset.type === 'video')
+    );
+    // One representative (first img-bearing item) per distinct data-group
+    const seen = new Set();
+    const gridItems = [];
+    for (const item of catItems) {
+      const g = item.dataset.group;
+      if (g && !seen.has(g) && item.querySelector('img')) {
+        seen.add(g);
+        gridItems.push(item);
+        if (gridItems.length >= GRID_COUNT) break;
       }
-    } else {
-      gridItems = activeItems.filter(i => i.querySelector('img')).slice(0, GRID_COUNT);
+    }
+    // Fallback for ungrouped categories: first 3 image items
+    if (gridItems.length === 0) {
+      gridItems.push(...catItems.filter(i => i.querySelector('img')).slice(0, GRID_COUNT));
     }
     for (const item of gridItems) {
-      const img  = item.querySelector('img');
+      const img = item.querySelector('img');
+      const g   = item.dataset.group || null;
       const tile = document.createElement('div');
-      tile.className = 'work-grid-item';
+      tile.className = 'work-grid-item' + (g && activeGroup === g ? ' active' : '');
+      if (g) tile.dataset.group = g;
       tile.innerHTML =
         '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
         '<div class="work-grid-overlay">' +
           '<p class="work-grid-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
           '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
         '</div>';
-      tile.addEventListener('click', () => openLightbox(item));
+      if (g) {
+        tile.addEventListener('click', () => {
+          activeGroup = (activeGroup === g) ? null : g;
+          renderGrid();
+          browseSlide = 0;
+          buildActiveItems();
+          renderBrowseItems();
+          applyBrowseLayout(false);
+        });
+      } else {
+        tile.addEventListener('click', () => openLightbox(item));
+      }
       workGrid.appendChild(tile);
     }
   }
@@ -1844,6 +1870,7 @@
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
+      activeGroup = null;
       refreshWork();
     });
   });

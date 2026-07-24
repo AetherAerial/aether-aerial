@@ -869,6 +869,75 @@
       .lightbox-prev { left: -44px; }
       .lightbox-next { right: -44px; }
     }
+
+    /* BOOKING MODAL */
+    .booking-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      background: rgba(2,3,8,0.93);
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .booking-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .booking-modal-inner {
+      background: var(--deep);
+      border: 1px solid rgba(201,169,110,0.18);
+      width: 100%;
+      max-width: 720px;
+      position: relative;
+      padding: 52px 52px 48px;
+      margin: 40px auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+    }
+    .booking-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--mist);
+      font-size: 18px;
+      cursor: none;
+      padding: 6px 10px;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+    .booking-modal-close:hover { color: var(--gold); }
+    .booking-modal-eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .booking-modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 300;
+      color: var(--starlight);
+      margin-bottom: 36px;
+      line-height: 1.1;
+    }
+    .booking-modal-title em { font-style: italic; color: var(--gold); }
+    @media (max-width: 600px) {
+      .booking-modal { padding: 0; }
+      .booking-modal-inner {
+        max-width: 100%;
+        min-height: 100svh;
+        margin: 0;
+        padding: 52px 24px 40px;
+        border: none;
+        box-shadow: none;
+      }
+    }
+
     @media (max-width: 500px) {
       .work-grid { grid-template-columns: 1fr; }
       .browse-wrapper { gap: 8px; }
@@ -1274,7 +1343,7 @@
 </head>
 <body>
 
-<a href="#contact" class="float-cta" id="floatCta">Book a Flight</a>
+<a href="#" class="float-cta" id="floatCta">Book a Flight</a>
 
 <canvas id="stars-canvas"></canvas>
 <div class="cursor" id="cursor"></div>
@@ -1290,7 +1359,7 @@
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Book a Flight</a>
+  <a href="#" class="nav-cta" id="navBookingBtn">Book a Flight</a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
     <span></span>
     <span></span>
@@ -1308,7 +1377,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-drawer-cta">
-    <a href="#contact">Book a Flight</a>
+    <a href="#" class="drawer-booking-btn">Book a Flight</a>
   </div>
 </div>
 
@@ -1574,6 +1643,62 @@
       <p class="lightbox-caption-cat" id="lightboxCat"></p>
       <p class="lightbox-caption-title" id="lightboxTitle"></p>
     </div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="booking-modal" id="bookingModal">
+  <div class="booking-modal-inner">
+    <button class="booking-modal-close" id="bookingModalClose">✕</button>
+    <p class="booking-modal-eyebrow">Book a Flight</p>
+    <h2 class="booking-modal-title">Let's build something <em>Aerial</em></h2>
+    <form method="POST" action="https://formspree.io/f/xbdbbybd">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="bm-name">Name *</label>
+          <input class="form-input" type="text" id="bm-name" name="name" required placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bm-company">Company</label>
+          <input class="form-input" type="text" id="bm-company" name="company" placeholder="Company name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bm-email">Email *</label>
+          <input class="form-input" type="email" id="bm-email" name="email" required placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bm-phone">Phone</label>
+          <input class="form-input" type="tel" id="bm-phone" name="phone" placeholder="+1 (000) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bm-location">Project Location</label>
+          <input class="form-input" type="text" id="bm-location" name="location" placeholder="City, State" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bm-timeline">Timeline</label>
+          <input class="form-input" type="text" id="bm-timeline" name="timeline" placeholder="e.g. Q3 2026, ASAP, Flexible" />
+        </div>
+        <div class="form-group full">
+          <label class="form-label" for="bm-service">Type of Service *</label>
+          <select class="form-select" id="bm-service" name="service" required>
+            <option value="" disabled selected>Select a Service</option>
+            <option value="Real Estate &amp; Architecture">Real Estate &amp; Architecture</option>
+            <option value="Aerial Photography &amp; Video">Aerial Photography &amp; Video</option>
+            <option value="Branded Content">Branded Content</option>
+            <option value="Event Coverage">Event Coverage</option>
+            <option value="Mapping &amp; Inspection">Mapping &amp; Inspection</option>
+            <option value="Custom / Other Project">Custom / Other Project</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label" for="bm-message">Message *</label>
+          <textarea class="form-textarea" id="bm-message" name="message" required rows="5" placeholder="Tell us about your project..."></textarea>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="form-submit">Submit Inquiry</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -2136,6 +2261,37 @@
       }
     });
   }
+
+  // Booking modal
+  const bookingModal     = document.getElementById('bookingModal');
+  const bookingModalClose = document.getElementById('bookingModalClose');
+  const navBookingBtn    = document.getElementById('navBookingBtn');
+  const drawerBookingBtns = document.querySelectorAll('.drawer-booking-btn');
+
+  function openBookingModal() {
+    bookingModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBookingModal() {
+    bookingModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  navBookingBtn.addEventListener('click', e => { e.preventDefault(); openBookingModal(); });
+  floatCta.addEventListener('click', e => { e.preventDefault(); openBookingModal(); });
+  drawerBookingBtns.forEach(btn => btn.addEventListener('click', e => {
+    e.preventDefault();
+    closeDrawer();
+    openBookingModal();
+  }));
+
+  bookingModalClose.addEventListener('click', closeBookingModal);
+  bookingModal.addEventListener('click', e => { if (e.target === bookingModal) closeBookingModal(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && bookingModal.classList.contains('open')) closeBookingModal();
+  });
 </script>
 </body>
 </html>

@@ -560,83 +560,152 @@
       border-color: var(--gold);
     }
 
-    /* CAROUSEL */
-    .carousel { position: relative; margin-top: 0; }
-
-    .carousel-stage {
+    /* WORK HIGHLIGHT GRID */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      margin-top: 0;
+    }
+    .work-grid-item {
       position: relative;
-      width: 100%;
+      overflow: hidden;
       aspect-ratio: 16/9;
       background: var(--nebula);
-      overflow: hidden;
     }
-
-    .carousel-img {
-      position: absolute;
-      inset: 0;
+    .work-grid-item img {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
-      opacity: 0;
-      transition: opacity 0.45s ease;
+      filter: brightness(0.82) saturate(0.9);
+      transition: transform 0.6s cubic-bezier(0.23,1,0.32,1), filter 0.4s;
     }
-    .carousel-img.active { opacity: 1; }
-
-    .carousel-overlay {
+    .work-grid-item:hover img { transform: scale(1.05); filter: brightness(1) saturate(1.05); }
+    .work-grid-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(2,3,8,0.82) 0%, transparent 52%);
-      display: flex;
-      align-items: flex-end;
-      padding: 36px;
+      background: linear-gradient(to top, rgba(2,3,8,0.88) 0%, transparent 55%);
       opacity: 0;
       transition: opacity 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
       pointer-events: none;
     }
-    .carousel-stage:hover .carousel-overlay { opacity: 1; }
-
-    .carousel-cat {
+    .work-grid-item:hover .work-grid-overlay { opacity: 1; }
+    .work-grid-cat {
       font-family: 'Raleway', sans-serif;
-      font-size: 9px;
+      font-size: 8px;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
-    .carousel-title {
+    .work-grid-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 300;
       color: var(--white);
     }
 
-    .carousel-arrow {
+    /* BROWSE CAROUSEL */
+    .browse-section { margin-top: 4px; }
+    .browse-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .browse-viewport {
+      flex: 1;
+      overflow: hidden;
+      min-width: 0;
+    }
+    .browse-track {
+      display: flex;
+      gap: 4px;
+      transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .browse-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--nebula);
+      flex-shrink: 0;
+    }
+    .browse-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.82) saturate(0.9);
+      transition: transform 0.6s cubic-bezier(0.23,1,0.32,1), filter 0.4s;
+    }
+    .browse-item:hover img { transform: scale(1.05); filter: brightness(1) saturate(1.05); }
+    .browse-item-overlay {
       position: absolute;
-      top: 50%; transform: translateY(-50%);
-      background: rgba(2,3,8,0.4);
+      inset: 0;
+      background: linear-gradient(to top, rgba(2,3,8,0.88) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      pointer-events: none;
+    }
+    .browse-item:hover .browse-item-overlay { opacity: 1; }
+    .browse-item-cat {
+      font-family: 'Raleway', sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .browse-item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .browse-arrow {
+      flex-shrink: 0;
+      background: rgba(2,3,8,0.35);
       border: 1px solid rgba(201,169,110,0.25);
       color: var(--gold);
       width: 44px; height: 44px;
       font-size: 22px;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.3s, border-color 0.3s, color 0.3s;
-      z-index: 10;
     }
-    .carousel-arrow:hover { background: var(--gold); border-color: var(--gold); color: var(--void); }
-    .carousel-prev { left: 20px; }
-    .carousel-next { right: 20px; }
-
-    .carousel-footer {
+    .browse-arrow:hover { background: var(--gold); border-color: var(--gold); color: var(--void); }
+    .browse-arrow:disabled { opacity: 0.3; pointer-events: none; }
+    .browse-footer {
       display: flex;
-      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
       padding: 14px 0 0;
     }
-    .carousel-counter {
+    .browse-counter {
       font-family: 'Raleway', sans-serif;
       font-size: 9px;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--mist);
+      flex-shrink: 0;
+    }
+    .browse-progress-bar {
+      flex: 1;
+      height: 1px;
+      background: rgba(154,181,212,0.18);
+      position: relative;
+      overflow: hidden;
+    }
+    .browse-progress-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: var(--gold);
+      transition: width 0.45s ease;
     }
 
     /* Hidden gallery data (lightbox source) */
@@ -726,12 +795,15 @@
     .lightbox-next { right: -64px; }
 
     @media (max-width: 900px) {
-      .carousel-arrow { width: 36px; height: 36px; font-size: 18px; }
-      .carousel-prev { left: 12px; }
-      .carousel-next { right: 12px; }
-      .carousel-overlay { padding: 20px; }
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .browse-arrow { width: 36px; height: 36px; font-size: 18px; }
       .lightbox-prev { left: -44px; }
       .lightbox-next { right: -44px; }
+    }
+    @media (max-width: 500px) {
+      .work-grid { grid-template-columns: 1fr; }
+      .browse-wrapper { gap: 8px; }
+      .browse-arrow { width: 32px; height: 32px; font-size: 16px; }
     }
 
     /* CONTACT */
@@ -1241,21 +1313,23 @@
     <button class="filter-btn" data-filter="events">Events</button>
   </div>
 
-  <!-- CAROUSEL -->
-  <div class="carousel reveal">
-    <div class="carousel-stage" id="carouselStage">
-      <img class="carousel-img" id="carouselImg" src="" alt="" />
-      <div class="carousel-overlay">
-        <div class="carousel-info">
-          <p class="carousel-cat" id="carouselCat"></p>
-          <p class="carousel-title" id="carouselTitle"></p>
-        </div>
+  <!-- HIGHLIGHT GRID -->
+  <div class="work-grid reveal" id="workGrid"></div>
+
+  <!-- BROWSE CAROUSEL -->
+  <div class="browse-section reveal">
+    <div class="browse-wrapper">
+      <button class="browse-arrow" id="browsePrev">&#8249;</button>
+      <div class="browse-viewport" id="browseViewport">
+        <div class="browse-track" id="browseTrack"></div>
       </div>
-      <button class="carousel-arrow carousel-prev" id="carouselPrev">&#8249;</button>
-      <button class="carousel-arrow carousel-next" id="carouselNext">&#8250;</button>
+      <button class="browse-arrow" id="browseNext">&#8250;</button>
     </div>
-    <div class="carousel-footer">
-      <span class="carousel-counter" id="carouselCounter">01 / 08</span>
+    <div class="browse-footer">
+      <span class="browse-counter" id="browseCounter">1&ndash;3 of 8</span>
+      <div class="browse-progress-bar">
+        <div class="browse-progress-fill" id="browseProgressFill"></div>
+      </div>
     </div>
   </div>
 
@@ -1674,69 +1748,131 @@
 
   reveals.forEach(r => obs.observe(r));
 
-  // ── CAROUSEL ──
-  const filterBtns    = document.querySelectorAll('.filter-btn');
-  const galleryItems  = document.querySelectorAll('.gallery-item');
-  const carouselImg   = document.getElementById('carouselImg');
-  const carouselCatEl = document.getElementById('carouselCat');
-  const carouselTitleEl = document.getElementById('carouselTitle');
-  const carouselCounter = document.getElementById('carouselCounter');
-  const carouselStage = document.getElementById('carouselStage');
-  const carouselPrevBtn = document.getElementById('carouselPrev');
-  const carouselNextBtn = document.getElementById('carouselNext');
+  // ── SELECTED WORK ──
+  const filterBtns      = document.querySelectorAll('.filter-btn');
+  const galleryItems    = document.querySelectorAll('.gallery-item');
+  const workGrid        = document.getElementById('workGrid');
+  const browseViewport  = document.getElementById('browseViewport');
+  const browseTrack     = document.getElementById('browseTrack');
+  const browsePrevBtn   = document.getElementById('browsePrev');
+  const browseNextBtn   = document.getElementById('browseNext');
+  const browseCounter   = document.getElementById('browseCounter');
+  const browseProgressFill = document.getElementById('browseProgressFill');
 
-  let activeItems = [];
-  let carouselIndex = 0;
-  let carouselBusy = false;
-  let currentFilter = 'all';
+  let activeItems    = [];
+  let currentFilter  = 'all';
+  let browseSlide    = 0;
+  let browseIPS      = 3;        // items per slide; recalculated on resize
+  const GRID_COUNT   = 3;        // tiles shown in highlight grid
 
-  function pad(n) { return String(n).padStart(2, '0'); }
+  function getIPS() {
+    if (window.innerWidth < 500) return 1;
+    if (window.innerWidth < 900) return 2;
+    return 3;
+  }
+
+  function escH(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
 
   function buildActiveItems() {
-    activeItems = [...galleryItems].filter(item => {
-      const matchesFilter = currentFilter === 'all' || item.dataset.category === currentFilter;
-      return matchesFilter && item.querySelector('img');
-    });
-    // Sync inline display so the lightbox sees the same set
+    activeItems = [...galleryItems].filter(item =>
+      (currentFilter === 'all' || item.dataset.category === currentFilter) && item.querySelector('img')
+    );
     galleryItems.forEach(item => {
       item.style.display = activeItems.includes(item) ? '' : 'none';
     });
   }
 
-  function showSlide(index, animate) {
-    if (!activeItems.length) return;
-    carouselIndex = ((index % activeItems.length) + activeItems.length) % activeItems.length;
-    const item = activeItems[carouselIndex];
-    const imgEl = item.querySelector('img');
-    carouselCatEl.textContent   = item.dataset.cat   || '';
-    carouselTitleEl.textContent = item.dataset.title || '';
-    carouselCounter.textContent = pad(carouselIndex + 1) + ' / ' + pad(activeItems.length);
-
-    if (!animate || !carouselImg.classList.contains('active')) {
-      carouselImg.src = imgEl.src;
-      carouselImg.alt = item.dataset.title || '';
-      carouselImg.classList.add('active');
-      return;
+  // ── HIGHLIGHT GRID ──
+  function renderGrid() {
+    workGrid.innerHTML = '';
+    const count = Math.min(GRID_COUNT, activeItems.length);
+    for (let i = 0; i < count; i++) {
+      const item = activeItems[i];
+      const img  = item.querySelector('img');
+      const tile = document.createElement('div');
+      tile.className = 'work-grid-item';
+      tile.innerHTML =
+        '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
+        '<div class="work-grid-overlay">' +
+          '<p class="work-grid-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
+          '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
+        '</div>';
+      tile.addEventListener('click', () => openLightbox(item));
+      workGrid.appendChild(tile);
     }
-    if (carouselBusy) return;
-    carouselBusy = true;
-    carouselImg.classList.remove('active');
-    setTimeout(() => {
-      carouselImg.src = imgEl.src;
-      carouselImg.alt = item.dataset.title || '';
-      carouselImg.classList.add('active');
-      carouselBusy = false;
-    }, 450);
   }
 
-  // Hide filter tabs that have no real images yet
+  // ── BROWSE CAROUSEL ──
+  function renderBrowseItems() {
+    browseTrack.innerHTML = '';
+    activeItems.forEach(item => {
+      const img  = item.querySelector('img');
+      const tile = document.createElement('div');
+      tile.className = 'browse-item';
+      tile.innerHTML =
+        '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
+        '<div class="browse-item-overlay">' +
+          '<p class="browse-item-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
+          '<p class="browse-item-title">' + escH(item.dataset.title || '') + '</p>' +
+        '</div>';
+      tile.addEventListener('click', () => openLightbox(item));
+      browseTrack.appendChild(tile);
+    });
+  }
+
+  function applyBrowseLayout(animate) {
+    browseIPS = getIPS();
+    const gap  = 4;
+    const vw   = browseViewport.clientWidth;
+    const itemW = (vw - gap * (browseIPS - 1)) / browseIPS;
+
+    browseTrack.querySelectorAll('.browse-item').forEach(el => {
+      el.style.width = itemW + 'px';
+    });
+
+    const maxSlide = Math.max(0, Math.ceil(activeItems.length / browseIPS) - 1);
+    if (browseSlide > maxSlide) browseSlide = maxSlide;
+
+    const slideW = (itemW + gap) * browseIPS;
+
+    if (!animate) {
+      browseTrack.style.transition = 'none';
+      void browseTrack.offsetHeight;
+    } else {
+      browseTrack.style.transition = 'transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)';
+    }
+    browseTrack.style.transform = 'translateX(-' + (browseSlide * slideW) + 'px)';
+
+    updateBrowseUI();
+  }
+
+  function updateBrowseUI() {
+    const total  = Math.ceil(activeItems.length / browseIPS);
+    const start  = browseSlide * browseIPS + 1;
+    const end    = Math.min(start + browseIPS - 1, activeItems.length);
+    browseCounter.textContent = start + '–' + end + ' of ' + activeItems.length;
+    const pct = total <= 1 ? 100 : (browseSlide / (total - 1)) * 100;
+    browseProgressFill.style.width = pct + '%';
+    browsePrevBtn.disabled = browseSlide === 0;
+    browseNextBtn.disabled = browseSlide >= total - 1;
+  }
+
+  function refreshWork() {
+    buildActiveItems();
+    renderGrid();
+    browseSlide = 0;
+    renderBrowseItems();
+    applyBrowseLayout(false);
+  }
+
+  // Hide filter tabs with no images
   filterBtns.forEach(btn => {
     const cat = btn.dataset.filter;
     if (cat === 'all') return;
-    const hasImages = [...galleryItems].some(item =>
-      item.dataset.category === cat && item.querySelector('img')
-    );
-    if (!hasImages) btn.style.display = 'none';
+    if (![...galleryItems].some(i => i.dataset.category === cat && i.querySelector('img')))
+      btn.style.display = 'none';
   });
 
   // Filter tab clicks
@@ -1745,32 +1881,36 @@
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
-      buildActiveItems();
-      showSlide(0, false);
+      refreshWork();
     });
   });
 
-  // Arrow navigation
-  carouselPrevBtn.addEventListener('click', () => showSlide(carouselIndex - 1, true));
-  carouselNextBtn.addEventListener('click', () => showSlide(carouselIndex + 1, true));
-
-  // Touch swipe
-  let swipeX = 0;
-  carouselStage.addEventListener('touchstart', e => { swipeX = e.changedTouches[0].clientX; }, { passive: true });
-  carouselStage.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - swipeX;
-    if (Math.abs(dx) > 40) showSlide(carouselIndex + (dx < 0 ? 1 : -1), true);
-  }, { passive: true });
-
-  // Click carousel image → open lightbox
-  carouselStage.addEventListener('click', e => {
-    if (e.target.closest('.carousel-arrow')) return;
-    if (activeItems.length) openLightbox(activeItems[carouselIndex]);
+  // Browse arrow clicks
+  browsePrevBtn.addEventListener('click', () => {
+    if (browseSlide > 0) { browseSlide--; applyBrowseLayout(true); }
+  });
+  browseNextBtn.addEventListener('click', () => {
+    const maxSlide = Math.max(0, Math.ceil(activeItems.length / browseIPS) - 1);
+    if (browseSlide < maxSlide) { browseSlide++; applyBrowseLayout(true); }
   });
 
-  // Init carousel
-  buildActiveItems();
-  showSlide(0, false);
+  // Touch swipe on browse viewport
+  let swipeX = 0;
+  browseViewport.addEventListener('touchstart', e => { swipeX = e.changedTouches[0].clientX; }, { passive: true });
+  browseViewport.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - swipeX;
+    if (Math.abs(dx) < 40) return;
+    const maxSlide = Math.max(0, Math.ceil(activeItems.length / browseIPS) - 1);
+    if (dx < 0 && browseSlide < maxSlide) browseSlide++;
+    else if (dx > 0 && browseSlide > 0) browseSlide--;
+    applyBrowseLayout(true);
+  }, { passive: true });
+
+  // Recalculate on resize
+  window.addEventListener('resize', () => applyBrowseLayout(false), { passive: true });
+
+  // Init
+  refreshWork();
 
   // ── LIGHTBOX ──
   const lightbox     = document.getElementById('lightbox');

@@ -323,7 +323,7 @@
 
     .section-label {
       font-family: 'Raleway', sans-serif;
-      font-size: 9px;
+      font-size: 11px;
       letter-spacing: 0.5em;
       text-transform: uppercase;
       color: var(--gold);
@@ -379,10 +379,10 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top left, rgba(201,169,110,0.11), transparent 22%),
-        radial-gradient(circle at top right, rgba(201,169,110,0.11), transparent 22%),
-        radial-gradient(circle at bottom left, rgba(201,169,110,0.11), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(201,169,110,0.11), transparent 22%);
+        radial-gradient(ellipse 120% 40% at 50% 0%, rgba(201,169,110,0.10), transparent 100%),
+        radial-gradient(ellipse 120% 40% at 50% 100%, rgba(201,169,110,0.10), transparent 100%),
+        radial-gradient(ellipse 40% 120% at 0% 50%, rgba(201,169,110,0.10), transparent 100%),
+        radial-gradient(ellipse 40% 120% at 100% 50%, rgba(201,169,110,0.10), transparent 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
@@ -441,7 +441,7 @@
 
     .stat-label {
       font-family: 'Raleway', sans-serif;
-      font-size: 9px;
+      font-size: 11px;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--mist);

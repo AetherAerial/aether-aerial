@@ -1028,6 +1028,25 @@
     }
     .tile-mute-btn:hover { background: rgba(201,169,110,0.18); border-color: rgba(201,169,110,0.55); }
 
+    /* SECTION DIVIDER ACCENT */
+    .section-divider-accent {
+      display: flex;
+      align-items: center;
+      width: min(1100px, 88vw);
+      margin: 0 auto;
+      filter: drop-shadow(0 0 5px rgba(201,169,110,0.5)) drop-shadow(0 0 10px rgba(201,169,110,0.22));
+    }
+    .sda-line { flex: 1; height: 1px; }
+    .sda-line.left  { background: linear-gradient(to right, transparent, var(--gold)); }
+    .sda-line.right { background: linear-gradient(to right, var(--gold), transparent); }
+    .sda-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
     /* CONTACT */
     .contact-section {
       position: relative;
@@ -1776,6 +1795,13 @@
       </div>
     </form>
   </div>
+</div>
+
+<!-- GALLERY → CONTACT DIVIDER -->
+<div class="section-divider-accent reveal">
+  <div class="sda-line left"></div>
+  <div class="sda-dot"></div>
+  <div class="sda-line right"></div>
 </div>
 
 <!-- CONTACT -->

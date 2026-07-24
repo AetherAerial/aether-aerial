@@ -682,7 +682,6 @@
       transition: background 0.3s, border-color 0.3s, color 0.3s;
     }
     .browse-arrow:hover { background: var(--gold); border-color: var(--gold); color: var(--void); }
-    .browse-arrow:disabled { opacity: 0.3; pointer-events: none; }
     .browse-footer {
       display: flex;
       align-items: center;
@@ -1188,10 +1187,10 @@
 <nav>
   <a href="#" class="nav-logo">AETHER <span>AERIAL</span></a>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Work</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#gear">Gear</a></li>
+    <li><a href="#execution">Execution</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Book a Flight</a>
@@ -1205,10 +1204,10 @@
 <!-- MOBILE DRAWER -->
 <div class="nav-drawer" id="navDrawer">
   <ul class="nav-drawer-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Work</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#gear">Gear</a></li>
+    <li><a href="#execution">Execution</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-drawer-cta">
@@ -1233,19 +1232,16 @@
   <div class="divider-line"></div>
 </div>
 
-<div class="section">
+<div class="section" id="about">
   <div class="two-col">
     <div class="reveal">
       <p class="section-label">About AETHER AERIAL</p>
       <h2 class="section-heading">Vision <em>elevated</em> beyond the horizon</h2>
     </div>
     <div class="reveal reveal-delay-1">
-      <p class="section-body">Aether — the ancient name for the space above the world, where perspective has no limits.</p>
-      <p class="section-body">That is where we operate.</p>
-      <p class="section-body">A veteran owned business built on integrity, discipline, and an unwavering commitment to the highest level of excellence.</p>
-      <p class="section-body">Aether doesn't follow the standard, we set it. Every project seen from an angle that reframes its scale, its setting, its story. What exists on the ground is transformed from above.</p>
-      <p class="section-body">That is Aether Aerial.</p>
-      <p class="section-body">Precision in every flight. Intention in every frame. Perspective. Elevated.</p>
+      <p class="section-body">The ancients split the sky in two. Aer was the ordinary air — low, familiar, breathed by everything bound to the ground. Aether was the air above it: rarer, brighter, closer to whatever they considered divine.</p>
+      <p class="section-body">We took our name from the second sky.</p>
+      <p class="section-body">Aether doesn't follow the standard, we set it. Every project seen from an angle that reframes its scale, its setting, its story. What exists on the ground is transformed from above. That is Aether Aerial. Precision in every flight. Intention in every frame. Perspective. Elevated.</p>
     </div>
   </div>
 </div>
@@ -1302,10 +1298,73 @@
   </div>
 </div>
 
-<!-- SELECTED WORK -->
+<!-- EXECUTION -->
+<div class="section" id="execution">
+  <div class="two-col">
+    <div>
+      <p class="section-label reveal">Execution</p>
+      <h2 class="section-heading reveal reveal-delay-1">How we <em>execute</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-content">
+          <div class="step-title">Pre-Flight Planning</div>
+          <p class="step-desc">NOTAM verification, weather assessment, and airspace authorization submitted well in advance. Every engagement is planned with the same discipline expected on a professional job site. FAA Part 107 certified and fully insured.</p>
+        </div>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-content">
+          <div class="step-title">On-Site Execution</div>
+          <p class="step-desc">Equipment checks, final airspace confirmation, and a deliberate flight plan before anything leaves the ground. Every angle is chosen with purpose, every maneuver imagined for how it will feel in the final cut.</p>
+        </div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-content">
+          <div class="step-title">Post-Production</div>
+          <p class="step-desc">Footage moves into DaVinci Resolve where the story gets its finish. Color graded to the tone your project deserves, cinematic and considered from the first frame to the last.</p>
+        </div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-content">
+          <div class="step-title">Structured Delivery</div>
+          <p class="step-desc">Final assets organized, formatted, and in your hands without delay. Because the work doesn't end at landing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="section-label reveal" style="margin-top: 80px;">Equipment</p>
+  <div class="gear-row">
+    <div class="gear-item reveal">
+      <div class="gear-name">DJI Mavic 4 Pro</div>
+      <p class="gear-spec">
+        Triple-camera system · Hasselblad-tuned optics · 4/3" CMOS sensor · 6K video · 3-axis stabilized gimbal · 43-minute flight time
+      </p>
+    </div>
+    <div class="gear-item reveal reveal-delay-1">
+      <div class="gear-name">DJI Avata 2</div>
+      <p class="gear-spec">
+        FPV cinematic drone · 4K/60fps · Ultra-wide immersive FOV · High-speed low-altitude flight · Compact &amp; agile
+      </p>
+    </div>
+    <div class="gear-item reveal reveal-delay-2">
+      <div class="gear-name">DaVinci Resolve</div>
+      <p class="gear-spec">
+        Industry-standard color grading pipeline · Log-to-delivery workflows · HDR mastering · Noise reduction · Full post-production suite
+      </p>
+    </div>
+    <div class="gear-item reveal reveal-delay-3">
+      <div class="gear-name">FAA Compliance Suite</div>
+      <p class="gear-spec">
+        Part 107 remote pilot certificate · Aloft ATC · B4UFLY · TFR verification · LAANC authorization · Liability insured
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
 <div class="section" id="gallery">
-  <p class="section-label reveal">Selected Work</p>
-  <h2 class="section-heading reveal reveal-delay-1">Selected <em>work</em></h2>
+  <p class="section-label reveal">Gallery</p>
+  <h2 class="section-heading reveal reveal-delay-1">Selected <em>gallery</em></h2>
 
   <!-- FILTER TABS -->
   <div class="gallery-filters reveal reveal-delay-2">
@@ -1516,74 +1575,6 @@
   </div>
 </div>
 
-<!-- PROCESS -->
-<div class="section" id="process">
-  <div class="two-col">
-    <div>
-      <p class="section-label reveal">Process</p>
-      <h2 class="section-heading reveal reveal-delay-1">How we <em>operate</em></h2>
-    </div>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="step-content">
-          <div class="step-title">Pre-Flight Planning</div>
-          <p class="step-desc">NOTAM verification, weather assessment, and airspace authorization submitted well in advance. Every engagement is planned with the same discipline expected on a professional job site. FAA Part 107 certified and fully insured.</p>
-        </div>
-      </div>
-      <div class="process-step reveal reveal-delay-1">
-        <div class="step-content">
-          <div class="step-title">On-Site Execution</div>
-          <p class="step-desc">Equipment checks, final airspace confirmation, and a deliberate flight plan before anything leaves the ground. Every angle is chosen with purpose, every maneuver imagined for how it will feel in the final cut.</p>
-        </div>
-      </div>
-      <div class="process-step reveal reveal-delay-2">
-        <div class="step-content">
-          <div class="step-title">Post-Production</div>
-          <p class="step-desc">Footage moves into DaVinci Resolve where the story gets its finish. Color graded to the tone your project deserves, cinematic and considered from the first frame to the last.</p>
-        </div>
-      </div>
-      <div class="process-step reveal reveal-delay-3">
-        <div class="step-content">
-          <div class="step-title">Structured Delivery</div>
-          <p class="step-desc">Final assets organized, formatted, and in your hands without delay. Because the work doesn't end at landing.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- GEAR -->
-<div class="section" id="gear">
-  <p class="section-label reveal">Equipment</p>
-  <h2 class="section-heading reveal reveal-delay-1">Professional <em>grade</em> hardware</h2>
-  <div class="gear-row">
-    <div class="gear-item reveal">
-      <div class="gear-name">DJI Mavic 4 Pro</div>
-      <p class="gear-spec">
-        Triple-camera system · Hasselblad-tuned optics · 4/3" CMOS sensor · 6K video · 3-axis stabilized gimbal · 43-minute flight time
-      </p>
-    </div>
-    <div class="gear-item reveal reveal-delay-1">
-      <div class="gear-name">DJI Avata 2</div>
-      <p class="gear-spec">
-        FPV cinematic drone · 4K/60fps · Ultra-wide immersive FOV · High-speed low-altitude flight · Compact &amp; agile
-      </p>
-    </div>
-    <div class="gear-item reveal reveal-delay-2">
-      <div class="gear-name">DaVinci Resolve</div>
-      <p class="gear-spec">
-        Industry-standard color grading pipeline · Log-to-delivery workflows · HDR mastering · Noise reduction · Full post-production suite
-      </p>
-    </div>
-    <div class="gear-item reveal reveal-delay-3">
-      <div class="gear-name">FAA Compliance Suite</div>
-      <p class="gear-spec">
-        Part 107 remote pilot certificate · Aloft ATC · B4UFLY · TFR verification · LAANC authorization · Liability insured
-      </p>
-    </div>
-  </div>
-</div>
-
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <h2 class="contact-title reveal">Let's build<br/>something <em>Aerial</em></h2>
@@ -1657,8 +1648,10 @@
   <p class="footer-copy">© 2026 ValTec LLC. All rights reserved.</p>
   <p class="footer-copy" style="font-size:11px; margin-top:6px;">VOB · Veteran Owned Business</p>
   <ul class="footer-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Work</a></li>
+    <li><a href="#execution">Execution</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
@@ -1858,8 +1851,6 @@
     browseCounter.textContent = start + '–' + end + ' of ' + activeItems.length;
     const pct = total <= 1 ? 100 : (browseSlide / (total - 1)) * 100;
     browseProgressFill.style.width = pct + '%';
-    browsePrevBtn.disabled = browseSlide === 0;
-    browseNextBtn.disabled = browseSlide >= total - 1;
   }
 
   function refreshWork() {
@@ -1889,24 +1880,21 @@
   });
 
   // Browse arrow clicks
-  browsePrevBtn.addEventListener('click', () => {
-    if (browseSlide > 0) { browseSlide--; applyBrowseLayout(true); }
-  });
-  browseNextBtn.addEventListener('click', () => {
-    const maxSlide = Math.max(0, Math.ceil(activeItems.length / browseIPS) - 1);
-    if (browseSlide < maxSlide) { browseSlide++; applyBrowseLayout(true); }
-  });
+  function browseStep(dir) {
+    const total = Math.ceil(activeItems.length / browseIPS);
+    browseSlide = (browseSlide + dir + total) % total;
+    applyBrowseLayout(true);
+  }
+
+  browsePrevBtn.addEventListener('click', () => browseStep(-1));
+  browseNextBtn.addEventListener('click', () => browseStep(1));
 
   // Touch swipe on browse viewport
   let swipeX = 0;
   browseViewport.addEventListener('touchstart', e => { swipeX = e.changedTouches[0].clientX; }, { passive: true });
   browseViewport.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - swipeX;
-    if (Math.abs(dx) < 40) return;
-    const maxSlide = Math.max(0, Math.ceil(activeItems.length / browseIPS) - 1);
-    if (dx < 0 && browseSlide < maxSlide) browseSlide++;
-    else if (dx > 0 && browseSlide > 0) browseSlide--;
-    applyBrowseLayout(true);
+    if (Math.abs(dx) >= 40) browseStep(dx < 0 ? 1 : -1);
   }, { passive: true });
 
   // Recalculate on resize

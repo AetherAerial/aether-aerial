@@ -1829,9 +1829,10 @@
   let currentIndex = 0;
   let visibleItems = [];
 
-  function openLightbox(index) {
+  function openLightbox(clickedItem) {
     visibleItems = [...galleryItems].filter(i => i.style.display !== 'none');
-    currentIndex = index;
+    currentIndex = visibleItems.indexOf(clickedItem);
+    if (currentIndex === -1) return;
     updateLightbox();
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1851,8 +1852,8 @@
     document.body.style.overflow = '';
   }
 
-  galleryItems.forEach((item, i) => {
-    item.addEventListener('click', () => openLightbox(i));
+  galleryItems.forEach((item) => {
+    item.addEventListener('click', () => openLightbox(item));
   });
 
   lightboxClose.addEventListener('click', closeLightbox);

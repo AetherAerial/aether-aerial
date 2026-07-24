@@ -77,7 +77,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 60px;
+      padding: 10px 60px;
       background: linear-gradient(to bottom, rgba(2,3,8,0.97) 0%, transparent 100%);
       transition: box-shadow 0.3s ease;
     }
@@ -90,7 +90,7 @@
       flex-shrink: 0;
     }
     .nav-logo img {
-      height: 52px;
+      height: 100px;
       width: auto;
       display: block;
     }
@@ -1942,7 +1942,10 @@
       if (!groupReps.has(g) && item.querySelector('img')) groupReps.set(g, item); // first image
       if (item.dataset.type === 'video') groupReps.set(g, item);                  // video overrides
     }
-    const gridItems = [...groupReps.values()].slice(0, GRID_COUNT);
+    // Video-representative groups first, then image-only groups
+    let gridItems = [...groupReps.values()].sort(
+      (a, b) => (a.dataset.type === 'video' ? 0 : 1) - (b.dataset.type === 'video' ? 0 : 1)
+    ).slice(0, GRID_COUNT);
     // Fallback for ungrouped categories: first 3 image items
     if (gridItems.length === 0) {
       gridItems.push(...catItems.filter(i => i.querySelector('img')).slice(0, GRID_COUNT));
@@ -1998,19 +2001,45 @@
     startGridCoordinator();
   }
 
-  // Plays grid video tiles one at a time in DOM order, round-robin
+  // Round-robin coordinator: one grid video plays at a time.
+  // Hover overrides coordinator; on leave, coordinator resumes from next tile.
+  // `seq` is incremented on each hover event so stale `ended` listeners are no-ops.
   function startGridCoordinator() {
     const vids = [...workGrid.querySelectorAll('video')];
     if (!vids.length) return;
     vids.forEach(v => { v.pause(); v.currentTime = 0; });
-    function advanceTo(i) {
+
+    let seq = 0;
+    let coordPaused = false;
+
+    function runCoord(i, s) {
+      if (s !== seq || coordPaused) return;
+      vids.forEach((v, j) => { if (j !== i) v.pause(); });
       vids[i].play().catch(() => {});
       vids[i].addEventListener('ended', () => {
         vids[i].currentTime = 0;
-        advanceTo((i + 1) % vids.length);
+        runCoord((i + 1) % vids.length, s);
       }, { once: true });
     }
-    advanceTo(0);
+
+    vids.forEach((v, i) => {
+      const tile = v.parentElement;
+      if (!tile) return;
+      tile.addEventListener('mouseenter', () => {
+        seq++;
+        coordPaused = true;
+        vids.forEach((u, j) => { if (j !== i) u.pause(); });
+        v.play().catch(() => {});
+      });
+      tile.addEventListener('mouseleave', () => {
+        v.pause();
+        v.currentTime = 0;
+        coordPaused = false;
+        runCoord((i + 1) % vids.length, ++seq);
+      });
+    });
+
+    runCoord(0, seq);
   }
 
   // ── BROWSE CAROUSEL ──

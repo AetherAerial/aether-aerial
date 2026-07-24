@@ -195,7 +195,14 @@
       position: relative;
       z-index: 3;
       opacity: 0;
-      animation: fadeUp 0.9s 0.65s ease forwards;
+      animation: fadeUp 2.2s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+      filter: drop-shadow(0 0 5px rgba(201,169,110,0.5)) drop-shadow(0 0 10px rgba(201,169,110,0.22));
+    }
+    .hero-accent-inner {
+      display: flex;
+      align-items: center;
+      width: min(580px, 82vw);
+      margin: 6px auto;
       filter: drop-shadow(0 0 5px rgba(201,169,110,0.5)) drop-shadow(0 0 10px rgba(201,169,110,0.22));
     }
     .hero-accent-line {
@@ -234,9 +241,12 @@
       margin-bottom: 0;
       position: relative;
       z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       opacity: 0;
       transform: translateY(30px);
-      animation: fadeUp 1s 0.5s ease forwards;
+      animation: fadeUp 2.8s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
     }
 
     .hero-perspective-tagline {
@@ -248,6 +258,9 @@
       margin-bottom: 0;
       position: relative;
       z-index: 3;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 2.2s 2.2s cubic-bezier(0.16,1,0.3,1) forwards;
     }
 
     .hero-subtitle-word {
@@ -328,7 +341,7 @@
       gap: 10px;
       z-index: 3;
       opacity: 0;
-      animation: fadeUp 0.9s 1.8s ease forwards;
+      animation: fadeUp 2.2s 3.2s cubic-bezier(0.16,1,0.3,1) forwards;
     }
     .hero-scroll span {
       font-family: 'Raleway', sans-serif;
@@ -1304,7 +1317,15 @@
   <video class="hero-video" src="https://media.aetheraerial.com/hero/silversands.mp4" autoplay muted playsinline preload="auto" poster=""></video>
   <div class="hero-atmosphere"></div>
   <div class="hero-title-scrim"></div>
-  <h1 class="hero-title">AETHER<br>AERIAL</h1>
+  <div class="hero-title" role="heading" aria-level="1" aria-label="Aether Aerial">
+    <span>AETHER</span>
+    <div class="hero-accent-inner">
+      <div class="hero-accent-line left"></div>
+      <div class="hero-accent-dot"></div>
+      <div class="hero-accent-line right"></div>
+    </div>
+    <span>AERIAL</span>
+  </div>
   <div class="hero-accent">
     <div class="hero-accent-line left"></div>
     <div class="hero-accent-dot"></div>
@@ -1594,12 +1615,12 @@
         <label class="form-label" for="cf-service">Type of Service *</label>
         <select class="form-select" id="cf-service" name="service" required>
           <option value="" disabled selected>Select a Service</option>
-          <option value="Construction Progress Documentation">Construction Progress Documentation</option>
-          <option value="Architectural Marketing Media">Architectural Marketing Media</option>
-          <option value="Orthomosaic &amp; Site Mapping">Orthomosaic &amp; Site Mapping</option>
-          <option value="Inspection &amp; Survey Capture">Inspection &amp; Survey Capture</option>
-          <option value="Private Estate &amp; Events">Private Estate &amp; Events</option>
-          <option value="Specialty / Custom Project">Specialty / Custom Project</option>
+          <option value="Real Estate &amp; Architecture">Real Estate &amp; Architecture</option>
+          <option value="Aerial Photography &amp; Video">Aerial Photography &amp; Video</option>
+          <option value="Branded Content">Branded Content</option>
+          <option value="Event Coverage">Event Coverage</option>
+          <option value="Mapping &amp; Inspection">Mapping &amp; Inspection</option>
+          <option value="Custom / Other Project">Custom / Other Project</option>
         </select>
       </div>
 

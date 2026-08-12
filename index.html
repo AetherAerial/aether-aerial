@@ -242,12 +242,6 @@
     }
 
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(30px, 5.2vw, 72px);
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: 0.02em;
-      color: var(--white);
       margin-bottom: 0;
       position: relative;
       z-index: 3;
@@ -257,6 +251,11 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 2.8s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .hero-title img {
+      height: clamp(80px, 13vw, 200px);
+      width: auto;
+      display: block;
     }
 
     .hero-perspective-tagline {
@@ -1463,13 +1462,7 @@
   <div class="hero-atmosphere"></div>
   <div class="hero-title-scrim"></div>
   <div class="hero-title" role="heading" aria-level="1" aria-label="Aether Aerial">
-    <span>AETHER</span>
-    <div class="hero-accent-inner">
-      <div class="hero-accent-line left"></div>
-      <div class="hero-accent-dot"></div>
-      <div class="hero-accent-line right"></div>
-    </div>
-    <span>AERIAL</span>
+    <img src="Aether_White.png" alt="">
   </div>
   <div class="hero-accent">
     <div class="hero-accent-line left"></div>

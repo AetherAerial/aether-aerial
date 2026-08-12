@@ -242,6 +242,7 @@
     }
 
     .hero-title {
+      margin-top: clamp(-120px, -10vw, -40px);
       margin-bottom: 0;
       position: relative;
       z-index: 3;
@@ -253,7 +254,7 @@
       animation: fadeUp 2.8s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
     }
     .hero-title img {
-      height: clamp(80px, 13vw, 200px);
+      height: clamp(140px, 20vw, 360px);
       width: auto;
       display: block;
     }
@@ -1426,7 +1427,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><img src="Aether_White.png" alt="Aether Aerial"></a>
+  <div class="nav-logo"><img src="Aether_White.png" alt="Aether Aerial"></div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>

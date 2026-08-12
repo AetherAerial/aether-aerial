@@ -82,7 +82,6 @@
       background: linear-gradient(to bottom, rgba(2,3,8,0.97) 0%, transparent 100%);
       transition: box-shadow 0.3s ease;
     }
-    nav.scrolled { /* scroll state retained for JS hook; no visual treatment */ }
 
     .nav-logo {
       display: flex;
@@ -140,6 +139,9 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
+      background: rgba(2,3,8,0.45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border: 1px solid var(--gold-dim);
       padding: 10px 22px;
       text-decoration: none;
@@ -192,7 +194,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: min(900px, 95vw);
-      height: 420px;
+      height: 560px;
       background: radial-gradient(ellipse at center, rgba(2,3,8,0.58) 0%, rgba(2,3,8,0.3) 35%, transparent 68%);
       pointer-events: none;
       z-index: 2;
@@ -559,7 +561,6 @@
       line-height: 1;
     }
 
-    .step-content {}
     .step-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 28px;
@@ -1007,7 +1008,7 @@
     }
 
     .work-grid-item.active { box-shadow: inset 0 0 0 2px var(--gold); }
-    .work-grid-item[data-group] { }
+    /* grouped work-grid items (uses data-group attribute) */
 
     .tile-mute-btn {
       position: absolute;

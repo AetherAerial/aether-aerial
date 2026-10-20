@@ -7,7 +7,8 @@
   <meta name="description" content="Premium aerial cinematography across Connecticut and the tristate area: cinematic video, real estate and architecture, branded content, and events. Perspective. Elevated." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#020308" />
-  <link rel="canonical" href="https://aetheraerial.com/" />
+  <link rel="preconnect" href="https://media.aetheraerial.com" crossorigin />
+<link rel="canonical" href="https://aetheraerial.com/" />
 
   <!-- Link previews -->
   <meta property="og:type" content="website" />
@@ -54,7 +55,7 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@200;300;400&family=Jost:wght@300;400&family=Cinzel:wght@400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="Aether_Transparent_IconOnly.svg" />
-  <link rel="apple-touch-icon" href="Aether_Transparent_IconOnly.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Aether Aerial">
   <style>
@@ -260,13 +261,6 @@
       animation: fadeUp 2.2s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
       filter: drop-shadow(0 0 5px rgba(201,169,110,0.5)) drop-shadow(0 0 10px rgba(201,169,110,0.22));
     }
-    .hero-accent-inner {
-      display: flex;
-      align-items: center;
-      width: min(580px, 82vw);
-      margin: 6px auto;
-      filter: drop-shadow(0 0 5px rgba(201,169,110,0.5)) drop-shadow(0 0 10px rgba(201,169,110,0.22));
-    }
     .hero-accent-line {
       flex: 1;
       height: 1px;
@@ -281,17 +275,6 @@
       flex-shrink: 0;
     }
 
-    .hero-eyebrow {
-      font-family: 'Raleway', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.5em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.9s 0.3s ease forwards;
-    }
 
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
@@ -329,73 +312,10 @@
       filter: drop-shadow(0 0 6px rgba(201,169,110,0.6)) drop-shadow(0 0 12px rgba(201,169,110,0.26));
     }
 
-    .hero-subtitle-word {
-      display: block;
-      font-family: 'Raleway', sans-serif;
-      font-size: clamp(18px, 2.5vw, 32px);
-      font-weight: 400;
-      letter-spacing: 0.5em;
-      color: var(--mist);
-      text-transform: uppercase;
-      margin-top: 18px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.9s 0.75s ease forwards;
-    }
 
-    .hero-tagline {
-      font-family: 'Cinzel', serif;
-      font-weight: 400;
-      font-size: clamp(16px, 1.8vw, 22px);
-      color: var(--mist);
-      margin-top: 32px;
-      max-width: 520px;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeUp 0.9s 1s ease forwards;
-    }
 
-    .hero-cta-group {
-      display: flex;
-      gap: 20px;
-      margin-top: 52px;
-      opacity: 0;
-      animation: fadeUp 0.9s 1.2s ease forwards;
-    }
 
-    .btn-primary {
-      font-family: 'Raleway', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: var(--void);
-      padding: 16px 36px;
-      border: none;
-      text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
-      display: inline-block;
-    }
-    .btn-primary:hover { background: #e0ba7e; transform: translateY(-2px); }
 
-    .btn-ghost {
-      font-family: 'Raleway', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      background: transparent;
-      color: var(--starlight);
-      padding: 16px 36px;
-      border: 1px solid rgba(154,181,212,0.25);
-      text-decoration: none;
-      transition: border-color 0.3s, color 0.3s, transform 0.2s;
-      display: inline-block;
-    }
-    .btn-ghost:hover {
-      border-color: var(--starlight);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
 
     .hero-scroll {
       position: absolute;
@@ -528,14 +448,6 @@
     .service-card:hover::before { opacity: 1; }
     .service-card:hover::after { opacity: 1; }
 
-    .service-number {
-      font-family: 'Cinzel', serif;
-      font-size: 60px;
-      font-weight: 400;
-      color: rgba(201,169,110,0.1);
-      line-height: 1;
-      margin-bottom: 20px;
-    }
 
     .service-title {
       font-family: 'Cinzel', serif;
@@ -610,13 +522,6 @@
       border-radius: 50%;
     }
 
-    .step-num {
-      font-family: 'Cinzel', serif;
-      font-size: 48px;
-      font-weight: 400;
-      color: rgba(201,169,110,0.15);
-      line-height: 1;
-    }
 
     .step-title {
       font-family: 'Cinzel', serif;
@@ -1500,9 +1405,19 @@
       footer { flex-direction: column; gap: 20px; text-align: center; }
       .float-cta { bottom: 24px; right: 20px; }
     }
+  
+    .skip-link{position:absolute;left:-9999px;top:8px;z-index:10000;background:#c9a96e;color:#020308;padding:10px 16px;font-family:inherit;text-decoration:none}
+    .skip-link:focus{left:8px}
+    :focus-visible{outline:2px solid #c9a96e;outline-offset:3px}
+    .work-grid-item:focus-visible,.browse-item:focus-visible{outline-offset:-3px}
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+    }
   </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <a href="#" class="float-cta" id="floatCta">Book a Flight</a>
 
@@ -1512,7 +1427,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><img src="Aether_Transparent_IconOnly.svg" alt="Aether Aerial"></a>
+  <a href="#" class="nav-logo" aria-label="Aether Aerial, back to top"><img src="Aether_Transparent_IconOnly.svg" alt=""></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -1521,7 +1436,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#" class="nav-cta" id="navBookingBtn">Book a Flight</a>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-controls="navDrawer" aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
@@ -1542,9 +1457,10 @@
   </div>
 </div>
 
+<main id="main">
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" src="https://media.aetheraerial.com/hero/silversands.mp4" autoplay muted playsinline preload="auto" poster=""></video>
+  <video class="hero-video" src="https://media.aetheraerial.com/hero/silversands.mp4" autoplay muted playsinline preload="metadata"></video>
   <div class="hero-atmosphere"></div>
   <div class="hero-title-scrim"></div>
   <div class="hero-title" role="heading" aria-level="1" aria-label="Aether Aerial">
@@ -1678,7 +1594,7 @@
   <p class="section-label reveal" style="margin-top: 80px;">Equipment</p>
   <div class="gear-row">
     <div class="gear-item reveal">
-      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/mavic4pro.jpg" alt="">
+      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/mavic4pro.jpg" loading="lazy" decoding="async" alt="">
       <div class="gear-item-overlay"></div>
       <div class="gear-name">DJI Mavic 4 Pro</div>
       <p class="gear-spec">
@@ -1686,7 +1602,7 @@
       </p>
     </div>
     <div class="gear-item reveal reveal-delay-1">
-      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/avata2.jpg" alt="">
+      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/avata2.jpg" loading="lazy" decoding="async" alt="">
       <div class="gear-item-overlay"></div>
       <div class="gear-name">DJI Avata 2</div>
       <p class="gear-spec">
@@ -1694,7 +1610,7 @@
       </p>
     </div>
     <div class="gear-item reveal reveal-delay-2">
-      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/davinci-resolve.jpg" alt="">
+      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/davinci-resolve.jpg" loading="lazy" decoding="async" alt="">
       <div class="gear-item-overlay"></div>
       <div class="gear-name">DaVinci Resolve</div>
       <p class="gear-spec">
@@ -1703,7 +1619,7 @@
     </div>
     <div class="gear-item reveal reveal-delay-3">
       <!-- placeholder: no FAA Compliance photo asset exists yet — src below is a guessed path matching the others' naming convention, update once a real image is uploaded -->
-      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/faa-compliance.jpg" alt="">
+      <img class="gear-item-img" src="https://media.aetheraerial.com/gear/faa-compliance.jpg" loading="lazy" decoding="async" alt="">
       <div class="gear-item-overlay"></div>
       <div class="gear-name">FAA Compliance Suite</div>
       <p class="gear-spec">
@@ -1815,16 +1731,16 @@
 </div>
 
 <!-- LIGHTBOX -->
-<div class="lb-modal" id="lbModal">
+<div class="lb-modal" id="lbModal" role="dialog" aria-modal="true" aria-label="Gallery viewer">
   <div class="lb-inner">
-    <button class="lb-close" id="lbClose">✕</button>
+    <button class="lb-close" id="lbClose" aria-label="Close viewer">✕</button>
     <div class="lb-viewer">
-      <button class="lb-arrow lb-prev" id="lbPrev">‹</button>
+      <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous">‹</button>
       <div class="lb-media" id="lbMedia">
         <img id="lbImg" src="" alt="" />
         <video id="lbVideo" controls playsinline src=""></video>
       </div>
-      <button class="lb-arrow lb-next" id="lbNext">›</button>
+      <button class="lb-arrow lb-next" id="lbNext" aria-label="Next">›</button>
     </div>
     <div class="lb-caption">
       <p class="lb-cat" id="lbCat"></p>
@@ -1835,9 +1751,9 @@
 </div>
 
 <!-- BOOKING MODAL -->
-<div class="booking-modal" id="bookingModal">
+<div class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-label="Book a flight">
   <div class="booking-modal-inner">
-    <button class="booking-modal-close" id="bookingModalClose">✕</button>
+    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close booking form">✕</button>
     <p class="booking-modal-eyebrow">Book a Flight</p>
     <h2 class="booking-modal-title">Let's build something <em>Aerial</em></h2>
     <form method="POST" action="https://formspree.io/f/xbdbbybd">
@@ -1972,6 +1888,7 @@
 </div>
 
 <!-- FOOTER -->
+</main>
 <footer>
   <div class="footer-logo">AETHER <span>AERIAL</span></div>
   <p class="footer-copy">© 2026 ValTec LLC. All rights reserved.</p>
@@ -2143,6 +2060,7 @@
       const g    = item.dataset.group || null;
       const tile = document.createElement('div');
       tile.className = 'work-grid-item' + (g && activeGroup === g ? ' active' : '');
+      tile.tabIndex = 0; tile.setAttribute('role','button'); tile.setAttribute('aria-label','View ' + (item.dataset.title || 'gallery item'));
       if (g) tile.dataset.group = g;
       if (item.dataset.type === 'video') {
         const vid = document.createElement('video');
@@ -2167,13 +2085,14 @@
       } else {
         const img = item.querySelector('img');
         tile.innerHTML =
-          '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
+          '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" loading="lazy" decoding="async" />' +
           '<div class="work-grid-overlay">' +
             '<p class="work-grid-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
             '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
           '</div>';
       }
       tile.addEventListener('click', () => openLightbox(item));
+      tile.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(item); } });
       workGrid.appendChild(tile);
     }
     startGridCoordinator();
@@ -2226,6 +2145,7 @@
     activeItems.forEach(item => {
       const tile = document.createElement('div');
       tile.className = 'browse-item';
+      tile.tabIndex = 0; tile.setAttribute('role','button'); tile.setAttribute('aria-label','View ' + (item.dataset.title || 'gallery item'));
       if (item.dataset.type === 'video') {
         const vid = document.createElement('video');
         vid.src = item.dataset.video || '';
@@ -2241,13 +2161,14 @@
       } else {
         const img = item.querySelector('img');
         tile.innerHTML =
-          '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" />' +
+          '<img src="' + escH(img.src) + '" alt="' + escH(item.dataset.title || '') + '" loading="lazy" decoding="async" />' +
           '<div class="browse-item-overlay">' +
             '<p class="browse-item-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
             '<p class="browse-item-title">' + escH(item.dataset.title || '') + '</p>' +
           '</div>';
       }
       tile.addEventListener('click', () => openLightbox(item));
+      tile.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(item); } });
       browseTrack.appendChild(tile);
     });
   }
@@ -2469,13 +2390,13 @@
   const drawer = document.getElementById('navDrawer');
 
   function openDrawer() {
-    hamburger.classList.add('open');
+    hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true');
     drawer.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
-    hamburger.classList.remove('open');
+    hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false');
     drawer.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -2543,11 +2464,13 @@
   function openBookingModal() {
     bookingModal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    window.__bmPrev = document.activeElement; setTimeout(() => { const f = document.getElementById('bm-name'); if (f) f.focus(); }, 50);
   }
 
   function closeBookingModal() {
     bookingModal.classList.remove('open');
     document.body.style.overflow = '';
+    if (window.__bmPrev && window.__bmPrev.focus) window.__bmPrev.focus();
   }
 
   navBookingBtn.addEventListener('click', e => { e.preventDefault(); openBookingModal(); });

@@ -1471,7 +1471,7 @@
 <main id="main">
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" src="https://media.aetheraerial.com/hero/silversands.mp4" autoplay muted playsinline preload="metadata"></video>
+  <video class="hero-video" data-src="https://media.aetheraerial.com/hero/silversands.mp4" poster="hero-poster.jpg" muted playsinline preload="none"></video>
   <div class="hero-atmosphere"></div>
   <div class="hero-title-scrim"></div>
   <div class="hero-title" role="heading" aria-level="1" aria-label="Aether Aerial">
@@ -2459,6 +2459,14 @@
 
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
+    // Phones, data-saver and reduced-motion users keep the still poster; everyone else streams the video.
+    const heroLite = (navigator.connection && navigator.connection.saveData) ||
+      window.matchMedia('(max-width: 700px)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!heroLite) {
+      heroVideo.src = heroVideo.dataset.src;
+      const p = heroVideo.play(); if (p && p.catch) p.catch(() => {});
+    }
     heroVideo.addEventListener('timeupdate', () => {
       if (heroVideo.duration && heroVideo.currentTime >= heroVideo.duration - 0.15) {
         heroVideo.currentTime = 0;

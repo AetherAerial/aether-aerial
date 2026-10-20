@@ -1770,6 +1770,7 @@
     <p class="booking-modal-eyebrow">Book a Flight</p>
     <h2 class="booking-modal-title">Let's build something <em>Aerial</em></h2>
     <form method="POST" action="https://formspree.io/f/xbdbbybd">
+    <input type="hidden" name="subject" value="New request: {{ name }} – {{ service }}">
       <div class="form-grid">
         <div class="form-group">
           <label class="form-label" for="bm-name">Name *</label>
@@ -1831,6 +1832,7 @@
   <h2 class="contact-title reveal">Let's build<br/>something <em>Aerial</em></h2>
   <p class="contact-sub reveal reveal-delay-1">Ready for imagery that changes how your audience sees the world?</p>
   <form class="contact-form reveal reveal-delay-2" method="POST" action="https://formspree.io/f/xbdbbybd">
+    <input type="hidden" name="subject" value="New request: {{ name }} – {{ service }}">
     <div class="form-grid">
 
       <div class="form-group">

@@ -570,17 +570,20 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transform: scale(1.06);
+      transition: opacity 0.5s ease, transform 0.7s ease;
       z-index: 0;
     }
-    .gear-item:hover .gear-item-img { opacity: 1; }
+    .gear-item:hover .gear-item-img { opacity: 1; transform: scale(1); }
     .gear-item-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, rgba(2,3,8,0.88) 0%, transparent 60%);
       z-index: 1;
       pointer-events: none;
+      transition: opacity 0.5s ease;
     }
+    .gear-item:hover .gear-item-overlay { opacity: 0; }
 
     .gear-name {
       font-family: 'Cinzel', serif;
@@ -590,6 +593,7 @@
       margin-bottom: 8px;
       position: relative;
       z-index: 2;
+      transition: opacity 0.5s ease;
     }
     .gear-spec {
       font-size: 13px;
@@ -597,7 +601,10 @@
       color: var(--mist);
       position: relative;
       z-index: 2;
+      transition: opacity 0.5s ease;
     }
+    .gear-item:hover .gear-name,
+    .gear-item:hover .gear-spec { opacity: 0.12; }
 
     /* SELECTED WORK — FILTERS */
     .gallery-filters {

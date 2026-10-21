@@ -85,6 +85,7 @@
       font-weight: 300;
       overflow-x: hidden;
       cursor: none;
+      counter-reset: section-label;
     }
     a, button { cursor: none; }
 
@@ -383,7 +384,23 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      counter-increment: section-label;
     }
+    .section-label::before {
+      content: counter(section-label, decimal-leading-zero);
+      content: counter(section-label, decimal-leading-zero) / "";
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      padding-right: calc(24px + 14px);
+      background: linear-gradient(var(--gold-dim), var(--gold-dim)) no-repeat right center / 24px 1px;
+    }
+    .section-label--sub { counter-increment: none; }
+    .section-label--sub::before { content: none; }
 
     .section-heading {
       font-family: 'Cormorant Garamond', serif;
@@ -1410,6 +1427,8 @@
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       .section { padding: 70px 24px; }
+      .section-label { gap: 10px; }
+      .section-label::before { padding-right: calc(16px + 10px); background-size: 16px 1px; }
       .services-grid { grid-template-columns: 1fr; }
       .stats-band { flex-direction: column; gap: 40px; padding: 50px 24px; }
       .gear-row { grid-template-columns: repeat(2, 1fr); }
@@ -1604,7 +1623,7 @@
       </div>
     </div>
   </div>
-  <p class="section-label reveal" style="margin-top: 80px;">Equipment</p>
+  <p class="section-label section-label--sub reveal" style="margin-top: 80px;">Equipment</p>
   <div class="gear-row">
     <div class="gear-item reveal">
       <img class="gear-item-img" src="gear/mavic4pro.jpg" loading="lazy" decoding="async" alt="">

@@ -999,6 +999,72 @@
     .work-grid-item.active { box-shadow: inset 0 0 0 2px var(--gold); }
     /* grouped work-grid items (uses data-group attribute) */
 
+    /* IDEA 4: case-study cards */
+    .work-grid-overlay {
+      opacity: 1;
+      background: linear-gradient(to top, rgba(2,3,8,0.9) 0%, rgba(2,3,8,0.35) 40%, transparent 65%);
+    }
+    .work-grid-title { line-height: 1.2; }
+    .work-grid-meta {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(201,169,110,0.3);
+      align-self: flex-start;
+    }
+    @media (max-width: 900px) {
+      .work-grid-overlay { padding: 20px; }
+      .work-grid-title { font-size: 18px; }
+    }
+    /* END IDEA 4 */
+
+    /* IDEA 5: proof strip */
+    .proof-strip {
+      position: relative;
+      z-index: 1;
+      background: var(--deep);
+      border-bottom: 1px solid rgba(154,181,212,0.1);
+      padding: 18px 24px;
+    }
+    .proof-strip ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      row-gap: 10px;
+    }
+    .proof-strip li {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--mist);
+      display: flex;
+      align-items: center;
+    }
+    .proof-strip li + li::before {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 14px;
+      background: var(--gold);
+      margin: 0 28px;
+    }
+    @media (max-width: 700px) {
+      .proof-strip ul { flex-direction: column; }
+      .proof-strip li { letter-spacing: 0.22em; text-align: center; }
+      .proof-strip li + li::before { display: none; }
+      .proof-strip li + li { border-top: 1px solid rgba(201,169,110,0.35); padding-top: 10px; }
+    }
+    /* END IDEA 5 */
+
     .tile-mute-btn {
       position: absolute;
       bottom: 10px;
@@ -1489,6 +1555,16 @@
     <div class="scroll-line"></div>
   </div>
 </section>
+
+<!-- IDEA 5: proof strip -->
+<div class="proof-strip">
+  <ul>
+    <li>FAA Part 107 Certified</li>
+    <li>Fairfield County &amp; Tristate</li>
+    <li>Luxury Real Estate &amp; Commercial</li>
+  </ul>
+</div>
+<!-- END IDEA 5 -->
 
 <!-- ABOUT -->
 <div class="section-divider">
@@ -2072,6 +2148,17 @@
     if (gridItems.length === 0) {
       gridItems.push(...catItems.filter(i => i.querySelector('img')).slice(0, GRID_COUNT));
     }
+    // IDEA 4: still/film count per group, taken from the gallery data
+    function groupMeta(g) {
+      if (!g) return '';
+      const members = catItems.filter(i => i.dataset.group === g);
+      const films  = members.filter(i => i.dataset.type === 'video').length;
+      const stills = members.length - films;
+      const parts = [];
+      if (stills) parts.push(stills + (stills === 1 ? ' still' : ' stills'));
+      if (films)  parts.push(films  + (films  === 1 ? ' film'  : ' films'));
+      return parts.length ? '<p class="work-grid-meta">' + escH(parts.join(' · ')) + '</p>' : '';
+    }
     for (const item of gridItems) {
       const g    = item.dataset.group || null;
       const tile = document.createElement('div');
@@ -2094,7 +2181,8 @@
         const overlay = document.createElement('div');
         overlay.className = 'work-grid-overlay';
         overlay.innerHTML = '<p class="work-grid-cat">' + escH(item.dataset.cat || '') + '</p>' +
-                            '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>';
+                            '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
+                            groupMeta(g);
         tile.appendChild(vid);
         tile.appendChild(muteBtn);
         tile.appendChild(overlay);
@@ -2105,6 +2193,7 @@
           '<div class="work-grid-overlay">' +
             '<p class="work-grid-cat">'   + escH(item.dataset.cat   || '') + '</p>' +
             '<p class="work-grid-title">' + escH(item.dataset.title || '') + '</p>' +
+            groupMeta(g) +
           '</div>';
       }
       tile.addEventListener('click', () => openLightbox(item));
